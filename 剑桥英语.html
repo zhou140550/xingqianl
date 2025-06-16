@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>剑桥英语</title>
+		<link rel="icon" href="./img/logo.ico" type="image/x-icon">
+        <link rel="stylesheet" href="styles.css">
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	</head>
+			<style>
+				.Teaching-materials {
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				gap: 10px;
+				background-color: white;
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+				box-sizing: border-box;
+			}
+			.Teaching-materials img {
+				width: 100%;
+				height: auto;
+				}
+			/* 新增样式，移除课程介绍部分的li标签首行缩进 */
+			#course-intro .kctext ul {
+				margin-left: 20px;
+				padding-left: 0;
+				list-style-type: decimal; /* 将黑点改成数字 */
+			}
+			#course-intro .kctext ul li {
+				text-indent: 0;
+			}
+			</style>
+	<body>
+		<div class="container">
+			<div class="menu">
+				<div class="menu-item" data-target="course-intro">课程介绍</div>
+				<div class="menu-item" data-target="teacher-intro">老师简介</div>
+				<div class="menu-item" data-target="enlightenment-class">教学大纲</div>
+				<div class="menu-item" data-target="class-display">教材展示</div>
+                <img src="./img/640.gif" alt="Logo" class="fengche">
+			</div>
+			
+			<div class="content" id="content">
+				<img src="./img/图标logo.png" alt="Logo" class="logo-init active-content">
+			</div>
+		</div>
+
+		<div class="hidden-content">
+			 <!-- 课程介绍 -->
+			<div id="course-intro" class="content-section">
+				<div class="title-overlay">
+					<h1>课程介绍</h1>
+				</div>
+				<div class="course-container">
+					<div class="image-row">
+						<img src="./img/yimyu/jqjs1.jpg" alt="课程图片1">
+						<img src="./img/yimyu/cls.jpg" alt="课程图片2">
+					</div>
+					<div class="text-container">
+						<div class="kctext">
+							剑桥少儿英语教材《Super Minds》，《Super Minds》是一套由剑桥大学出版社教育专家Herbert Puchta及其团队精心雕琢的系列英语教学课程，旨在开发智力、强化思维、促进师生互动。该教材适用于6-12岁的小学生，全套共7个级别，包括Start预备级和1-6级。<br>
+							教材特点：
+							<ul>
+								<li>思维技能培养:《SuperMinds》将思维技能融入课程体系，培养学生的好奇心、探索欲望、创造力、协作精神和解决问题的能力。教材通过故事教学、情境设置等方式，激发学生的思维活力和独立思考能力，帮助他们学会从不同角度思考问题，并提出符合逻辑的论证。</li>
+								<li>真实场景嵌入:教材在单词引入和语法句型学习时，每个单元都嵌入并创设真实场景，让学生能自然习得，运用交际语言教学法，学生在创设的情景中做到真实有效的交际。这种方法有助于学生更好地理解和应用所学知识。</li>
+								<li>跨学科学习:《Super Minds》教材围绕6个维度展开教学:单词、语法、故事和重点发音、听说读写技能、思维能力、跨学科学习。教材通过英语作为媒介，引导学生学习其他学科的内容，培养学生的综合能力。</li>
+								<li>剑桥考级对应:该课程体系涵盖剑桥体系的YLE考试所有大纲，可以对应考级，为以后留学扛好基础。教材内容与剑桥诵用五级、雅思考试等国际英语水平测试相衔接，为学生的未来学习和发展提供了坚实的基础。</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- 老师简介 -->
+			<div id="teacher-intro" class="content-section">
+				<div class="title-overlay">
+					<h1>老师简介</h1>
+				</div>
+				<div class="teacher-cards">
+					<div class="teacher-card">
+						<div class="image-container">
+							<img src="./img/yimyu/c4e5b2ec766a670af112b6d609a4bfb.jpg" alt="李老师" onerror="this.src='./img/default.jpg';">
+						</div>
+						<div class="content">
+							<h3>课程主讲——刘老师</h3>
+							<ul>
+								<li>瓦伦西亚大学高级英语研究硕士</li>
+								<li>精通英语、西班牙语</li>
+								<li>7年教学经验</li>
+								<li>熟悉小、初阶段完整学习体系</li>
+							</ul>
+							<h3>课程特色</h3>
+							<ul>
+								<li>8人小班教学</li>
+								<li>注重口语应用</li>
+								<li>培养英语思维</li>
+								<li>对标等级考试</li>
+							</ul>
+							<h3>开设班级</h3>
+							<ul>
+								<li>剑桥冲击班</li>
+								<li>口语提升班</li>
+								<li>升学备考班</li>
+							</ul>   
+						</div>
+					</div>
+					<div class="teacher-card">
+						<div class="image-container">
+							<img src="./img/yimyu/628a6560bcf5ba0bfac8d6f3a1ac4ba.jpg" alt="王老师" onerror="this.src='./img/default.jpg';">
+						</div>
+						<div class="content">
+							<h3>课程主讲——陈老师</h3>
+							<ul>
+								<li>7年初高英语教学经验</li>
+								<li>毕业于四川大学 持TKT证书</li>
+								<li>专注于青少年剑桥英语教学</li>
+							</ul>
+							<h3>课程特色</h3>
+							<ul>
+								<li>小班教学8人满班</li>
+								<li>系统学习效率高</li>
+								<li>短期突破全能提升</li>
+							</ul>  
+							<h3>开设班级</h3>
+							<ul>
+								<li>剑桥初级班</li>
+								<li>剑桥考级冲刺班</li>
+							</ul>  
+						</div>
+					</div>
+				</div>
+			</div>
+			 <!-- 教材展示 -->
+			<div id="enlightenment-class" class="content-section">
+				<div class="gallery-container">
+					<div class="gallery">
+						<div class="title-overlay">
+							<h1>大纲目录</h1>
+						</div>
+						<img src="./img/yimyu/目录1.jpg" alt="课堂展示1">
+						<img src="./img/yimyu/目录2.1.jpg" alt="课堂展示2">
+						<img src="./img/yimyu/目录2.2.jpg" alt="课堂展示3">
+						<img src="./img/yimyu/目录3.jpg" alt="课堂展示4">
+					</div>
+				</div>
+			</div>
+
+			<!-- 课堂展示 -->
+			<div id="class-display" class="content-section">
+				<div class="gallery-container">
+					<div class="gallery">
+						<div class="image-title">
+							<h1>parctice book level 3</h1>
+						</div>
+						<div class="Teaching-materials">
+							<img src="./img/yimyu/level3.jpg" alt="课堂展示1">
+							<img src="./img/yimyu/level (1).jpg" alt="课堂展示2">
+							<img src="./img/yimyu/level (2).jpg" alt="课堂展示3">
+							<img src="./img/yimyu/level (3).jpg" alt="课堂展示4">
+						</div>
+						<div class="image-title">
+							<h1>student's book 3</h1>
+						</div>
+						<div class="Teaching-materials">
+							<img src="./img/yimyu/student book3.jpg" alt="课堂展示1">
+							<img src="./img/yimyu/student (1).jpg" alt="课堂展示2">
+							<img src="./img/yimyu/student (2).jpg" alt="课堂展示3">
+							<img src="./img/yimyu/student (3).jpg" alt="课堂展示4">
+						</div>
+						<div class="image-title">
+							<h1>student's book 5</h1>
+						</div>
+						<div class="Teaching-materials">
+							<img src="./img/yimyu/students book 5.jpg" alt="课堂展示1">
+							<img src="./img/yimyu/book (1).jpg" alt="课堂展示2">
+							<img src="./img/yimyu/book (2).jpg" alt="课堂展示3">
+							<img src="./img/yimyu/book (3).jpg" alt="课堂展示4">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			$(document).ready(function() {
+				// 初始化内容显示
+				$('#content > *').addClass('active-content');
+
+				// 菜单点击事件
+				$('.menu-item').click(function() {
+					const $this = $(this);
+					$('.menu-item').removeClass('active');
+					showContent($this.data('target'));
+					$this.addClass('active');
+				});
+
+				// 内容切换函数
+				function showContent(target) {
+					const $newContent = $('#' + target).clone();
+					const $content = $('#content');
+					$content.html($newContent).addClass('has-content');
+
+					requestAnimationFrame(() => {
+						$newContent.addClass('active-content');
+					});
+				}
+
+				// 图片模态框功能
+				function openModal(src) {
+					const modal = $(`
+                    <div class="modal">
+                        <div class="modal-content">
+                            <img src="${src}" alt="全屏大图">
+                            <div class="modal-close">&times;</div>
+                        </div>
+                    </div>
+                `);
+					$('body').append(modal);
+					setTimeout(() => modal.addClass('active'), 10);
+
+					modal.find('.modal-close, .modal').click(() => {
+						modal.removeClass('active');
+						setTimeout(() => modal.remove(), 300);
+					});
+
+					$(document).on('keyup', (e) => {
+						if (e.key === 'Escape') modal.click();
+					});
+				}
+
+				// 画廊图片点击事件
+				$(document).on('click', '.gallery img, .clickable-image', function() {
+					openModal($(this).attr('src'));
+				});
+
+				// 老师卡片图片点击事件
+				$(document).on('click', '.teacher-card .image-container img', function() {
+					openModal($(this).attr('src'));
+				});
+			});
+		</script>
+	</body>
+</html>

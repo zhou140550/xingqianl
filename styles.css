@@ -1,0 +1,505 @@
+/* 基础样式 */
+body {
+	margin: 0;
+	font-family: Arial, sans-serif;
+	background-image: url(./img/bg_页面_1.png);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+
+/* 容器布局 */
+.container {
+	display: flex;
+	border-radius: 30px;
+	overflow: hidden;
+	width: 1200px;
+	height: 800px;
+}
+
+/* 菜单样式 */
+.menu {
+	background-color: #ffcc66;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	width: 250px;
+	min-width: 250px;
+	border-top-left-radius: 30px;
+	border-bottom-left-radius: 30px;
+	overflow: auto;
+	position: relative;
+}
+
+.menu-item {
+	padding: 15px;
+	margin: 10px 0;
+	text-align: center;
+	border-radius: 10px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+	font-weight: bold;
+	font-size: 24px;
+}
+
+.menu-item:hover {
+	background-color: #ffe680;
+}
+
+.menu-item.active {
+	background-color: #fff;
+	color: #00bfa5;
+	border-left: 5px solid #b22222;
+}
+
+/* 子菜单 */
+.submenu {
+	display: none;
+	flex-direction: column;
+	margin-top: 10px;
+	margin-left: 20px;
+}
+
+.submenu-item {
+	padding: 10px;
+	margin: 5px 0;
+	text-align: left;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+.submenu-item:hover {
+	background-color: #ffe680;
+}
+
+.submenu-item.active {
+	background-color: #fff;
+	color: #00bfa5;
+	border-left: 5px solid #b22222;
+}
+
+/* 内容区域 */
+.content {
+	flex-grow: 1;
+	padding: 20px;
+	background-color: rgba(255, 255, 255, 0.8); /* 半透明背景 */
+	backdrop-filter: blur(10px); /* 毛玻璃效果 */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	overflow: hidden;
+	height: 100%;
+	border-radius: 15px; /* 圆角效果 */
+}
+
+.content.has-content {
+	overflow: auto;
+}
+
+/* 课程介绍新布局 */
+.course-container {
+	margin-top: 20px;
+	background: #fff;
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+	border-radius: 15px;
+	overflow: hidden;
+	width: 100%;
+	max-width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 20px;
+}
+
+.course-container img.clickable-image {
+	width: 100%;
+	height: auto;
+	margin-bottom: 20px;
+	border-radius: 8px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	cursor: pointer;
+	transition: transform 0.3s ease;
+}
+
+.course-container img.clickable-image:hover {
+	transform: scale(1.02);
+}
+
+.course-container img.clickable-image:last-child {
+	margin-bottom: 0;
+}
+
+.image-row {
+	display: flex;
+	gap: 10px;
+	padding: 10px;
+	height: 300px;
+}
+
+.image-row img {
+	width: 50%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 10px;
+}
+
+.text-container {
+	padding: 25px;
+	background: #f8f8f8;
+}
+
+/* 文字样式 */
+.kctext {
+	font-size: 20px;
+	line-height: 1.8;
+	text-indent: 2em;
+	width: 100%;
+	color: #000;
+	font-weight: 600;
+}
+
+/* 标题样式 */
+.title-overlay {
+	position: absolute;
+	top: 20px;
+	left: 50px;
+	z-index: 2;
+	/* 提升层级确保覆盖 */
+}
+
+.title-overlay h1 {
+	font-size: 32px;
+	color: #000;
+	margin: 0;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+	.container {
+		width: 95%;
+		height: auto;
+		flex-direction: column;
+	}
+
+	.menu {
+		width: 100%;
+		border-radius: 30px 30px 0 0;
+	}
+
+	.content {
+		border-radius: 0 0 30px 30px;
+	}
+
+	.image-row {
+		flex-direction: column;
+		height: auto;
+	}
+
+	.image-row img {
+		width: 100%;
+		height: 200px;
+	}
+
+	.title-overlay {
+		left: 20px;
+		top: 15px;
+	}
+
+	.title-overlay h1 {
+		font-size: 28px;
+	}
+
+	.image-with-title {
+		margin-bottom: 30px;  /* 移动端缩小间距 */
+	}
+
+	.image-with-title img {
+		height: auto;  /* 确保图片在移动端显示完整 */
+	}
+
+	.menu-item {
+		font-size: 20px;  /* 调整菜单项字体大小 */
+	}
+
+	.submenu-item {
+		font-size: 18px;  /* 调整子菜单项字体大小 */
+	}
+
+	.teacher-card {
+		max-width: 100%;  /* 确保卡片在移动端显示完整 */
+		margin: 10px;  /* 调整卡片间距 */
+	}
+
+	.teacher-cards {
+		flex-direction: column;  /* 垂直排列卡片 */
+		align-items: center;
+	}
+
+	.course-container {
+		padding: 15px;
+	}
+	
+	.course-container img.clickable-image {
+		margin-bottom: 15px;
+	}
+}
+
+/* 画廊样式 */
+.gallery-container {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	overflow-y: auto;
+	height: calc(100% - 40px);
+	padding: 10px;
+}
+
+.gallery {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: left; /* 修改为居中对齐 */
+	align-items: flex-start;
+	width: 100%;
+}
+
+.gallery img, .gallery video {
+	box-sizing: border-box;
+	margin: 10px;
+	width: calc(33.33% - 20px);
+	height: auto;
+	cursor: pointer;
+	transition: transform 0.3s ease;
+	transform-origin: center;
+	text-align: left; /* 新增：图片左对齐 */
+}
+
+/* 模态框样式 */
+.modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.9);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 1000;
+	opacity: 0;
+	transition: opacity 0.3s;
+}
+
+.modal.active {
+	opacity: 1;
+}
+
+.modal-content {
+	position: relative;
+	max-width: 90%;
+	max-height: 90%;
+	transition: transform 0.3s;
+}
+
+.modal-content img {
+	max-width: 100%;
+	max-height: 90vh;
+	border-radius: 8px;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.modal-close {
+	position: absolute;
+	top: -40px;
+	right: -40px;
+	color: white;
+	font-size: 40px;
+	cursor: pointer;
+	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.modal-close:hover {
+	color: #ffcc66;
+}
+
+/* 其他辅助样式 */
+.hidden-content {
+	display: none;
+}
+
+#content>img.logo-init {
+	width: 300px;
+	height: 300px;
+	margin: auto;
+	opacity: 1;
+	transform: none;
+	transition: none;
+}
+
+#content>* {
+	opacity: 0;
+	transform: translateY(20px);
+	transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+#content>*.active-content {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+/* 新增：课程介绍卡片样式 */
+.teacher-card {
+	background: #f8f8f8;
+	border-radius: 10px;
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* 加深阴影效果 */
+	width: 100%;
+	max-width: 300px; /* 调整卡片宽度 */
+	overflow: hidden;
+	position: relative;
+	margin: 20px auto;
+	text-align: left; /* 新增：文字左对齐 */
+	height: 450px; /* 增加卡片高度 */
+}
+
+.teacher-card .image-container {
+	width: 100%;
+	height: 160px;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.teacher-card .image-container img {
+	width: 100%;
+	height: 100%; /* 确保图片高度填满容器 */
+	object-fit: cover;
+	object-position: top; /* 调整图片显示位置 */
+	border-radius: 10px;
+}
+
+.teacher-card .content {
+	padding: 15px;
+	color: #333;
+	background: #f8f8f8;
+	position: relative;
+	z-index: 1;
+	transition: transform 0.3s ease;
+	user-select: none;
+	text-align: left; /* 新增：文字左对齐 */
+	overflow-y: auto; /* 添加滚动条 */
+	max-height: 250px; /* 设置最大高度 */
+}
+
+.teacher-card .content h3 {
+	margin: 0;
+	font-weight: 600;
+}
+
+.teacher-card .content ul {
+	list-style-type: none;
+	/* padding-left: 30px; */
+	margin: 10px 0 0;
+}
+
+.teacher-card .content ul li {
+	position: relative;
+	margin-bottom: 5px;
+}
+
+.teacher-card .content ul li::before {
+	content: '';
+	position: absolute;
+	left: -25px;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 16px;
+	height: 16px;
+	background-image: url('./img/勋章.png'); /* 使用图片替换小黑点 */
+	background-size: cover;
+}
+
+/* 新增：内容区域容器定位 */
+.content-section {
+	position: relative;
+	width: 100%;
+	padding-top: 40px;
+	/* 为标题留出空间 */
+}
+
+/* 标题定位修正 */
+.title-overlay {
+	position: absolute;
+	top: 20px;
+	/* 标题距离顶部的距离 */
+	left: 50px;
+	/* 标题距离左侧的距离 */
+	z-index: 2;
+}
+
+/* 卡片间距调整 */
+.teacher-card {
+	margin-top: 60px;
+	/* 卡片距离标题的间距 */
+	width: 100%;
+	max-width: 300px;
+	/* 其他样式保持不变 */
+}
+
+/* 新增样式 */
+.teacher-cards {
+	display: flex;
+	gap: 20px;
+	justify-content: center;
+	align-items: flex-start;
+}
+
+.teacher-card {
+	flex: 1;
+	background: #f8f8f8;
+	border-radius: 10px;
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* 加深阴影效果 */
+	padding: 20px;
+	text-align: center;
+}
+
+.teacher-card img {
+	width: 100%;
+	height: auto;
+}
+
+.teacher-card .kctext {
+	margin-top: 15px;
+}
+
+.teacher-card h3, .teacher-card ul {
+	text-align: left !important;  /* 强制覆盖可能的继承样式 */
+	width: 100%;  /* 确保容器宽度撑满 */
+	padding-left: 30px;  /* 增加左侧内边距 */
+}
+.teacher-card ul {
+	padding-left: 25px;  /* 调整列表缩进对齐 */
+}
+.fengche{
+	position: absolute;
+	width: 100px;
+	height: 150px;
+	margin:  0 auto;
+	text-align: bottom;
+	left: 30%;
+	bottom: 0;
+}
+.image-with-title {
+	position: relative;
+	margin-bottom: 20px;  /* 控制不同图片区块的间距 */
+	overflow: hidden;  /* 确保图片显示完整 */
+}
+.image-with-title img {
+	width: 100%;
+	height: auto;
+}

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>课程介绍卡片</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 300px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .image-container {
+            width: 100%;
+            height: 150px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .content {
+            padding: 15px;
+            color: #333;
+            background: rgba(255, 255, 255, 0.9);
+            position: relative;
+            z-index: 1;
+            transition: transform 0.3s ease;
+            user-select: none;
+        }
+
+        .content h3 {
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .content ul {
+            list-style-type: none;
+            padding-left: 30px;
+            margin: 10px 0 0;
+        }
+
+        .content ul li {
+            position: relative;
+            margin-bottom: 5px;
+        }
+
+        .content ul li::before {
+            content: '\f091';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: -25px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #ffcc00;
+        }
+
+        .drag-handle {
+            width: 100%;
+            height: 10px;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            position: absolute;
+            top: 5px;
+            left: 0;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.3s ease;
+        }
+
+        .drag-handle::before {
+            content: '';
+            width: 30px;
+            height: 4px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 2px;
+        }
+
+        .content.dragging .drag-handle {
+            opacity: 0;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="card">
+        <div class="image-container">
+            <img src="./img/lx.jpg" alt="李老师" onerror="this.src='./img/default.jpg';">
+        </div>
+        <div class="content" id="draggable">
+            <div class="drag-handle"></div>
+            <h3>课程主讲——李老师</h3>
+            <ul>
+                <li>师从尹嘉伟老师</li>
+                <li>担任指隶书、行书、草书</li>
+                <li>泸州市书法家协会会员</li>
+                <li>青华书法协会优秀指导老师</li>
+            </ul>
+            <div class="drag-handle"></div>
+            <h3>课程内容</h3>
+            <ul>
+                <li>坐姿、握笔、控笔训练</li>
+                <li>楷书快写、单字提高、卷面书写</li>
+                <li>书体方向、古帖研习、比赛考级</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            const $draggable = $('#draggable');
+            const $card = $('.card');
+            let isDragging = false;
+            let startY, startTranslateY = 0;
+
+            function getMaxTranslate() {
+                return $draggable.outerHeight() - $card.outerHeight();
+            }
+
+            function getTranslateY($element) {
+                const transform = $element.css('transform');
+                return transform === 'none' ? 0 : new DOMMatrix(transform).m42;
+            }
+
+            $draggable.on('mousedown', function(e) {
+                isDragging = true;
+                startY = e.clientY;
+                startTranslateY = getTranslateY($draggable);
+                $draggable.addClass('dragging');
+                e.preventDefault();
+            });
+
+            $(document).on('mousemove', function(e) {
+                if (!isDragging) return;
+
+                const deltaY = e.clientY - startY;
+                let newTranslateY = startTranslateY - deltaY;
+                const maxTranslate = getMaxTranslate();
+
+                newTranslateY = Math.min(0, Math.max(-maxTranslate, newTranslateY));
+                $draggable.css('transform', `translateY(${newTranslateY}px)`);
+            });
+
+            $(document).on('mouseup', function() {
+                if (!isDragging) return;
+
+                isDragging = false;
+                $draggable.removeClass('dragging');
+
+                const currentTranslateY = getTranslateY($draggable);
+                const threshold = $card.outerHeight() * 0.4;
+
+                $draggable.css('transform', currentTranslateY <= -threshold ? 
+                    `translateY(${-getMaxTranslate()}px)` : 
+                    'translateY(0)');
+            });
+        });
+    </script>
+</body>
+</html>

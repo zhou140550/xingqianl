@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>思维课程</title>
+		<link rel="icon" href="./img/logo.ico" type="image/x-icon">
+        <link rel="stylesheet" href="styles.css">
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<style>
+			/* ...existing styles... */
+			.Teaching-materials {
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				gap: 10px;
+				background-color: white;
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+				box-sizing: border-box;
+			}
+			.Teaching-materials img {
+				width: 100%;
+				height: auto;
+				}
+		</style>
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="menu">
+				<div class="menu-item" data-target="course-intro">课程介绍</div>
+				<div class="menu-item" data-target="teacher-intro">老师简介</div>
+				<div class="menu-item" data-target="class-outline">教学大纲</div> <!-- 修改此处 -->
+				<div class="menu-item" data-target="enlightenment-class">教材展示</div>
+				<!-- <div class="menu-item" data-target="class-display">课堂展示</div> -->
+                <img src="./img/640.gif" alt="Logo" class="fengche">
+			</div>
+			
+			<div class="content" id="content">
+				<img src="./img/图标logo.png" alt="Logo" class="logo-init active-content">
+			</div>
+		</div>
+
+		<div class="hidden-content">
+			 <!-- 课程介绍 -->
+			<div id="course-intro" class="content-section">
+				<div class="title-overlay">
+					<h1>课程介绍</h1>
+				</div>
+				<div class="course-container">
+					<div class="image-row">
+						<img src="./img/siwei/kcjs1.jpg" alt="课程图片1">
+						<img src="./img/siwei/kcjs2.jpg" alt="课程图片2">
+					</div>
+					<div class="text-container">
+						<div class="kctext">
+							主要针对小学阶段的思维模式提升，旨在培养孩子数学思维能力的课程，它不仅教授数学知识，更强调解题思路和方法的传授，帮助孩子建立灵活的思维模式。以下是数学思维课程的主要内容:
+							<ul>
+								<li>数感和逻辑:精讲小阶数学的数感、逻辑等8个底层思维能力，帮助普娃举一反三。</li>
+								<li>计算专题:计算专题、解方程、应用题、行程问题、数论、立体几何等板块化学习。</li>
+								<li>思维拔高:教娃学数学的系统方法，培养锻炼娃的数学思维。</li>
+							</ul>
+							在选择数学思维课程时，可以根据孩子的年龄、基础以及学习需求来挑选适合的课程。
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- 老师简介 -->
+			<div id="teacher-intro" class="content-section">
+				<div class="title-overlay">
+					<h1>老师简介</h1>
+				</div>
+				<div class="teacher-cards">
+					<div class="teacher-card">
+						<div class="image-container">
+							<img src="./img/siwei/黄老师.jpg" alt="李老师" onerror="this.src='./img/default.jpg';">
+						</div>
+						<div class="content">
+							<h3>课程主讲——黄老师</h3>
+							<ul>
+								<li>原某杯赛优秀教练员</li>
+								<li>精通小升初和中考体系</li>
+								<li>重视学习习惯的培养，注重思维训练</li>
+								<li>每年通过黄老师组织的课程，成功进
+									入顶尖中学学习的学员为数众多</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="class-outline" class="content-section"> <!-- 修改此处 -->
+				<div class="image-with-title">
+					<div class="image-title">
+						<h1>三年级春季课程大纲</h1>
+					</div>
+					<div class="course-container">
+						<img src="./img/siwei/三年级春季.png" alt="教学大纲表格" class="clickable-image" style="width: 50%;"> <!-- 修改此处 -->
+					</div>
+				</div>
+				<div class="image-with-title">
+					<div class="image-title">
+						<h1>四年级春季基础班课程大纲</h1>
+					</div>
+					<div class="course-container">
+						<img src="./img/siwei/四年级基础班.png" alt="教学大纲表格" class="clickable-image" style="width: 50%;"> <!-- 修改此处 -->
+					</div>
+				</div>
+				<div class="image-with-title">
+					<div class="image-title">
+						<h1>四年级春季提高班课程大纲</h1>
+					</div>
+					<div class="course-container">
+						<img src="./img/siwei/四年级提高班.png" alt="教学大纲表格" class="clickable-image" style="width: 50%;"> <!-- 修改此处 -->
+					</div>
+				</div>
+				<div class="image-with-title">
+					<div class="image-title">
+						<h1>五年级春季提高班课程大纲</h1>
+					</div>
+					<div class="course-container">
+						<img src="./img/siwei/五年级春季提高班.png" alt="教学大纲表格" class="clickable-image" style="width: 50%;"> <!-- 修改此处 -->
+					</div>
+				</div>
+			</div>
+			 <!-- 教材展示 -->
+			<div id="enlightenment-class" class="content-section">
+				<div class="gallery-container">
+					<div class="gallery">
+						<div class="image-title">
+							<h1>三年级春季基础班</h1>
+						</div>
+						<div class="Teaching-materials">
+							<img src="./img/siwei/siweijc (3).jpg" alt="课堂展示1">
+							<img src="./img/siwei/siweijc (1).jpg" alt="课堂展示2">
+							<img src="./img/siwei/siweijc (2).jpg" alt="课堂展示3">
+							<img src="./img/siwei/siweijc (4).jpg" alt="课堂展示4">
+							<img src="./img/siwei/siweijc (5).jpg" alt="课堂展示5">
+						</div>
+						<div class="image-title">
+							<h1>四年级春季基础班</h1>
+						</div>
+						<div class="Teaching-materials">
+							<img src="./img/siwei/swsnjcj (1).jpg" alt="课堂展示1">
+							<img src="./img/siwei/swsnjcj (2).jpg" alt="课堂展示2">
+							<img src="./img/siwei/swsnjcj (3).jpg" alt="课堂展示3">
+							<img src="./img/siwei/swsnjcj (4).jpg" alt="课堂展示4">
+							<img src="./img/siwei/swsnjcj (5).jpg" alt="课堂展示5">
+						</div>
+						<div class="image-title">
+							<h1>四年级春季提升班</h1>
+						</div>
+						<div class="Teaching-materials">
+							<img src="./img/siwei/swwnjcj (1).jpg" alt="课堂展示1">
+							<img src="./img/siwei/swwnjcj (4).jpg" alt="课堂展示2">
+							<img src="./img/siwei/swwnjcj (3).jpg" alt="课堂展示3">
+							<img src="./img/siwei/swwnjcj (2).jpg" alt="课堂展示4">
+							<img src="./img/siwei/swwnjcj (5).jpg" alt="课堂展示5">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			$(document).ready(function() {
+				// 初始化内容显示
+				$('#content > *').addClass('active-content');
+
+				// 菜单点击事件
+				$('.menu-item').click(function() {
+					const $this = $(this);
+					$('.menu-item').removeClass('active');
+					showContent($this.data('target'));
+					$this.addClass('active');
+				});
+
+				// 内容切换函数
+				function showContent(target) {
+					const $newContent = $('#' + target).clone();
+					const $content = $('#content');
+					$content.html($newContent).addClass('has-content');
+
+					requestAnimationFrame(() => {
+						$newContent.addClass('active-content');
+					});
+				}
+
+				// 图片模态框功能
+				function openModal(src) {
+					const modal = $(`
+                    <div class="modal">
+                        <div class="modal-content">
+                            <img src="${src}" alt="全屏大图">
+                            <div class="modal-close">&times;</div>
+                        </div>
+                    </div>
+                `);
+					$('body').append(modal);
+					setTimeout(() => modal.addClass('active'), 10);
+
+					modal.find('.modal-close, .modal').click(() => {
+						modal.removeClass('active');
+						setTimeout(() => modal.remove(), 300);
+					});
+
+					$(document).on('keyup', (e) => {
+						if (e.key === 'Escape') modal.click();
+					});
+				}
+
+				// 画廊图片点击事件
+				$(document).on('click', '.gallery img, .clickable-image', function() {
+					openModal($(this).attr('src'));
+				});
+			});
+		</script>
+	</body>
+</html>

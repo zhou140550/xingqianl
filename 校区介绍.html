@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>校区介绍</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-image: url(./img/bg_页面_1.png);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* 确保内容显示完整 */
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+        .container {
+            width: 90%; /* 调整宽度 */
+            max-width: 900px; /* 调整最大宽度 */
+            margin: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            color: #333;
+            overflow: hidden; /* 确保内容在容器内滚动 */
+        }
+        .carousel {
+            width: 100%;
+            margin: 20px 0;
+            overflow: hidden;
+            position: relative;
+        }
+        .carousel img {
+            width: 100%;
+            border-radius: 10px;
+            user-select: none;
+        }
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .carousel-inner img {
+            min-width: 100%;
+            flex-shrink: 0;
+        }
+        .carousel-prev,
+        .carousel-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 40px;
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 1;
+            transition: background 0.3s ease;
+        }
+        .carousel-prev:hover,
+        .carousel-next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .carousel-prev {
+            left: 10px;
+        }
+        .carousel-next {
+            right: 10px;
+        }
+        p {
+            text-indent: 2em; /* 首行缩进2字符 */
+        }
+        .highlight {
+            font-size: 1.5em; /* 变大字体 */
+            font-weight: bold;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+            max-height: 400px; /* 限制高度 */
+            overflow-y: auto; /* 垂直滚动 */
+        }
+        .gallery img {
+            width: calc(33.333% - 10px); /* 固定宽度，三列排列 */
+            height: auto; /* 保持图片比例 */
+            border-radius: 10px;
+            object-fit: cover; /* 保持图片比例 */
+            cursor: pointer; /* 添加指针样式 */
+        }
+        .modal {
+            display: none; /* 初始隐藏 */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+        }
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .modal-prev,
+        .modal-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 40px;
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 1001;
+            transition: background 0.3s ease;
+        }
+        .modal-prev:hover,
+        .modal-next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .modal-prev {
+            left: 10px;
+        }
+        .modal-next {
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>校区介绍</h1>
+        <div class="carousel">
+            <div class="carousel-inner">
+                <img src="./img/lb1.jpg" alt="校区图片1">
+                <img src="./img/lb2.png" alt="校区图片2">
+                <img src="./img/lb3.png" alt="校区图片3">
+                <img src="./img/lb1.jpg" alt="克隆图片" class="clone">
+            </div>
+            <button class="carousel-prev" aria-label="上一张">&lt;</button>
+            <button class="carousel-next" aria-label="下一张">&gt;</button>
+        </div>
+        <p style="font-size: 1.2em;"><span class="highlight">星潜力</span>成立于2018年，主要为3-18岁青少儿提供各项优质专业教学服务。是集学前启蒙、思维拓展、少儿剑桥、硬软笔书法、少儿美术和体能、托管辅导为一体的综合型教育机构，本校区为全国美术考级指定考点，并多次组织开展美术及书法考级。校区面积1000余平方米，设置有10余间特色教室，2个图书阅读区，2个多功能运动及游乐空间，与成都语行客小语种、杨梅红绵阳校区、杨梅红乐山校区、智动星、奥跃汇体育同属一家教育集团。</p>
+        <h1>家长好评</h1>
+        <div class="gallery">
+            <img src="./img/家长好评/jzhp (1).jpg" alt=""><img src="./img/家长好评/jzhp (2).jpg" alt=""><img src="./img/家长好评/jzhp (3).jpg" alt=""><img src="./img/家长好评/jzhp (4).jpg" alt=""><img src="./img/家长好评/jzhp (5).jpg" alt=""><img src="./img/家长好评/jzhp (6).jpg" alt=""><img src="./img/家长好评/jzhp (7).jpg" alt=""><img src="./img/家长好评/jzhp (8).jpg" alt=""><img src="./img/家长好评/jzhp (9).jpg" alt=""><img src="./img/家长好评/jzhp (10).jpg" alt=""><img src="./img/家长好评/jzhp (11).jpg" alt=""><img src="./img/家长好评/jzhp (12).jpg" alt=""><img src="./img/家长好评/jzhp (13).jpg" alt=""><img src="./img/家长好评/jzhp (14).jpg" alt=""><img src="./img/家长好评/jzhp (15).jpg" alt=""><img src="./img/家长好评/jzhp (16).jpg" alt=""><img src="./img/家长好评/jzhp (17).jpg" alt=""><img src="./img/家长好评/jzhp (18).jpg" alt=""><img src="./img/家长好评/jzhp (19).jpg" alt=""><img src="./img/家长好评/jzhp (20).jpg" alt=""><img src="./img/家长好评/jzhp (21).jpg" alt=""><img src="./img/家长好评/jzhp (22).jpg" alt=""><img src="./img/家长好评/jzhp (23).jpg" alt=""><img src="./img/家长好评/jzhp (24).jpg" alt=""><img src="./img/家长好评/jzhp (25).jpg" alt=""><img src="./img/家长好评/jzhp (26).jpg" alt="">
+        </div>
+    </div>
+
+    <div id="modal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modal-img">
+        <button class="modal-prev" aria-label="上一张">&lt;</button>
+        <button class="modal-next" aria-label="下一张">&gt;</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const carouselInner = document.querySelector('.carousel-inner');
+            const prevBtn = document.querySelector('.carousel-prev');
+            const nextBtn = document.querySelector('.carousel-next');
+            const slides = document.querySelectorAll('.carousel-inner img:not(.clone)');
+            const totalSlides = slides.length;
+            const modal = document.getElementById('modal');
+            const modalImg = document.getElementById('modal-img');
+            const closeModal = document.querySelector('.close');
+            const galleryImages = document.querySelectorAll('.gallery img');
+            const modalPrev = document.querySelector('.modal-prev');
+            const modalNext = document.querySelector('.modal-next');
+            
+            let currentIndex = 0;
+            let isTransitioning = false;
+            let autoPlayInterval;
+            let currentModalIndex = 0;
+
+            function goToSlide(index) {
+                if (isTransitioning) return;
+                currentIndex = (index + totalSlides) % totalSlides;
+                startTransition(currentIndex);
+            }
+
+            function startTransition(targetIndex) {
+                isTransitioning = true;
+                carouselInner.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+                carouselInner.style.transform = `translateX(${-targetIndex * 100}%)`;
+
+                carouselInner.addEventListener('transitionend', () => {
+                    isTransitioning = false;
+                    if (targetIndex >= totalSlides) {
+                        currentIndex = 0;
+                        carouselInner.style.transition = 'none';
+                        carouselInner.style.transform = 'translateX(0)';
+                    } else if (targetIndex < 0) {
+                        currentIndex = totalSlides - 1;
+                        carouselInner.style.transition = 'none';
+                        carouselInner.style.transform = `translateX(${-currentIndex * 100}%)`;
+                    }
+                }, { once: true });
+            }
+
+            function prevSlide() {
+                goToSlide(currentIndex - 1);
+                resetAutoPlay();
+            }
+
+            function nextSlide() {
+                goToSlide(currentIndex + 1);
+                resetAutoPlay();
+            }
+
+            function resetAutoPlay() {
+                clearInterval(autoPlayInterval);
+                autoPlayInterval = setInterval(() => {
+                    goToSlide(currentIndex + 1);
+                }, 5000);
+            }
+
+            prevBtn.addEventListener('click', prevSlide);
+            nextBtn.addEventListener('click', nextSlide);
+
+            resetAutoPlay();
+
+            // 查看大图功能
+            galleryImages.forEach((img, index) => {
+                img.addEventListener('click', () => {
+                    modal.style.display = 'flex';
+                    modalImg.src = img.src;
+                    currentModalIndex = index;
+                });
+            });
+
+            closeModal.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+
+            function showModalImage(index) {
+                currentModalIndex = (index + galleryImages.length) % galleryImages.length;
+                modalImg.src = galleryImages[currentModalIndex].src;
+            }
+
+            modalPrev.addEventListener('click', () => {
+                showModalImage(currentModalIndex - 1);
+            });
+
+            modalNext.addEventListener('click', () => {
+                showModalImage(currentModalIndex + 1);
+            });
+        });
+    </script>
+</body>
+</html>

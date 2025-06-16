@@ -1,0 +1,527 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>体适能</title>
+	<link rel="icon" href="./img/logo.ico" type="image/x-icon">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-image: url(./img/bg_页面_1.png);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .container {
+            display: flex;
+            background-color: #555;
+            border-radius: 30px;
+            overflow: hidden;
+            width: 1200px;
+            height: 800px;
+        }
+
+        .menu {
+            background-color: #ffcc66;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            width: 250px;
+            min-width: 250px;
+            border-top-left-radius: 30px;
+            border-bottom-left-radius: 30px;
+            overflow: auto;
+        }
+
+        .menu-item {
+            padding: 15px;
+            margin: 10px 0;
+            text-align: center;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        .menu-item:hover {
+            background-color: #ffe680;
+        }
+
+        .menu-item.active {
+            background-color: #fff;
+            color: #00bfa5;
+            border-left: 5px solid #b22222;
+        }
+
+        .submenu {
+            display: none;
+            flex-direction: column;
+            margin-top: 10px;
+            margin-left: 20px;
+        }
+
+        .submenu-item {
+            padding: 10px;
+            margin: 5px 0;
+            text-align: left;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .submenu-item:hover {
+            background-color: #ffe680;
+        }
+
+        .submenu-item.active {
+            background-color: #fff;
+            color: #00bfa5;
+            border-left: 5px solid #b22222;
+        }
+
+        .content {
+            flex-grow: 1;
+            padding: 20px;
+            border-top-right-radius: 30px;
+            border-bottom-right-radius: 30px;
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow: hidden;
+            height: 100%;
+        }
+
+        .content.has-content {
+            overflow: auto;
+        }
+
+        #content > img.logo-init {
+            width: 300px;
+            height: 300px;
+            margin: auto;
+            opacity: 1;
+            transform: none;
+            transition: none;
+        }
+
+        .content-section {
+            width: 100%;
+            flex-grow: 1;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .content-section img {
+            border-radius: 10%;
+            width: 400px;
+            height: 400px;
+            margin-right: 20px;
+        }
+
+        .kctext {
+            font-size: 24px;
+            line-height: 1.5;
+            text-indent: 2em;
+            flex: 1;
+            letter-spacing: 0.5px;
+        }
+
+        .kctext h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .title-overlay {
+            position: absolute;
+            top: 0;
+            left: 50px;
+        }
+
+        #content > * {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        #content > *.active-content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .gallery-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            overflow-y: auto;
+            height: calc(100% - 40px);
+            padding: 10px;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-start;
+            width: 100%;
+        }
+
+        .gallery img {
+            box-sizing: border-box;
+            margin: 10px;
+            width: calc(33.33% - 20px);
+            height: auto;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            transform-origin: center;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+            z-index: 1;
+        }
+
+        @media (max-width: 1024px) {
+            .gallery img {
+                width: calc(50% - 20px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                height: auto;
+                flex-direction: column;
+            }
+
+            .menu {
+                width: 100%;
+                border-radius: 30px 30px 0 0;
+            }
+
+            .content {
+                border-radius: 0 0 30px 30px;
+            }
+
+            .content-section {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            .content-section img {
+                width: 300px;
+                height: 300px;
+                margin: 0 0 20px 0;
+            }
+
+            #content > img.logo-init {
+                width: 200px;
+                height: 200px;
+            }
+
+            .gallery {
+                height: auto;
+                overflow-y: visible;
+            }
+
+            .gallery img {
+                width: calc(100% - 20px);
+            }
+        }
+
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .modal.active {
+            opacity: 1;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            transition: transform 0.3s;
+        }
+
+        .modal-content img {
+            max-width: 100%;
+            max-height: 90vh;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -40px;
+            right: -40px;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-close:hover {
+            color: #ffcc66;
+        }
+
+        @media (max-width: 768px) {
+            .modal-close {
+                top: -30px;
+                right: 10px;
+                font-size: 30px;
+            }
+        }
+
+        .hidden-content {
+            display: none;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="menu">
+            <div class="menu-item" data-target="course-intro">课程介绍</div>
+
+            <div class="menu-item" data-target="enlightenment-class">启蒙班</div>
+            <div class="submenu">
+                <div class="submenu-item" data-target="teachers">任课老师</div>
+                <div class="submenu-item" data-target="class-display">课堂展示</div>
+            </div>
+
+            <div class="menu-item" data-target="junior-class">初级班</div>
+            <div class="submenu">
+                <div class="submenu-item" data-target="junior-teachers">任课老师</div>
+                <div class="submenu-item" data-target="junior-class-display">课堂展示</div>
+            </div>
+
+            <div class="menu-item" data-target="middle-class">初中班级</div>
+            <div class="submenu">
+                <div class="submenu-item" data-target="middle-teachers">任课老师</div>
+                <div class="submenu-item" data-target="middle-class-display">课堂展示</div>
+            </div>
+        </div>
+
+        <div class="content" id="content">
+            <img src="./img/logo.png" alt="Logo" class="logo-init active-content">
+        </div>
+    </div>
+
+    <div class="hidden-content">
+        <!-- 课程介绍 -->
+        <div id="course-intro" class="content-section">
+            <div class="title-overlay">
+                <h1>课程介绍</h1>
+            </div>
+            <img src="./img/meishu01.jpg" alt="课程介绍图片">
+            <div class="kctext">
+                幼儿班以创意美术为主，让小朋友认识色彩，感受色彩，初步接触绘画材料；小学阶段会逐步提升
+                绘画难度，比如线描、水粉等因材施教，专注于培养孩子发现美的眼光，欣赏美的品格，创造美的能力，培养小朋友的绘画能力。
+            </div>
+        </div>
+
+        <!-- 启蒙班任课老师 -->
+        <div id="teachers" class="content-section">
+            <div class="title-overlay">
+                <h1>启蒙班任课老师</h1>
+            </div>
+            <img src="./img/meishu01.jpg" alt="任课老师图片">
+            <div class="kctext">
+                教师团队由专业美术院校毕业的资深教师组成，拥有5年以上儿童美育经验，擅长通过趣味教学激发孩子的艺术潜能。
+            </div>
+        </div>
+
+        <!-- 启蒙班课堂展示 -->
+        <div id="class-display">
+            <div class="gallery-container">
+                <div class="gallery">
+                    <img src="./img/msktzs01.jpg" alt="课堂展示1">
+                    <img src="./img/msktzs02.jpg" alt="课堂展示2">
+                    <img src="./img/msktzs03.jpg" alt="课堂展示3">
+                    <img src="./img/msktzs04.jpg" alt="课堂展示4">
+                    <img src="./img/msktzs05.jpg" alt="课堂展示5">
+                    <img src="./img/msktzs06.jpg" alt="课堂展示6">
+                    <img src="./img/msktzs07.jpg" alt="课堂展示7">
+                    <img src="./img/msktzs08.jpg" alt="课堂展示8">
+                    <img src="./img/msktzs09.jpg" alt="课堂展示9">
+                </div>
+            </div>
+        </div>
+
+        <!-- 初级班课程 -->
+        <div id="junior-class" class="content-section">
+            <div class="title-overlay">
+                <h1>初级班课程</h1>
+            </div>
+            <img src="./img/junior-class.png" alt="初级班图片">
+            <div class="kctext">
+                初级班课程通过系统的绘画训练，教授素描基础、色彩理论和构图技巧。课程内容包含：
+                <ul>
+                    <li>几何体结构素描</li>
+                    <li>静物水粉写生</li>
+                    <li>简单场景创作</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 初级班任课老师 -->
+        <div id="junior-teachers" class="content-section">
+            <div class="title-overlay">
+                <h1>初级班任课老师</h1>
+            </div>
+            <img src="./img/junior-teachers.png" alt="初级班任课老师图片">
+            <div class="kctext">
+                教学团队：张老师（中国美术学院毕业，擅长素描教学）<br>
+                助教团队：3位持有美术教师资格证的专业助教<br>
+                师生比：1:5精细化指导
+            </div>
+        </div>
+
+        <!-- 初级班课堂展示 -->
+        <div id="junior-class-display">
+            <div class="gallery-container">
+                <div class="gallery">
+                    <img src="./img/junior-class-display.png" alt="初级班课堂展示1">
+                    <img src="./img/junior-class-display.png" alt="初级班课堂展示2">
+                    <img src="./img/junior-class-display.png" alt="初级班课堂展示3">
+                </div>
+            </div>
+        </div>
+
+        <!-- 初中班级课程 -->
+        <div id="middle-class" class="content-section">
+            <div class="title-overlay">
+                <h1>初中班级课程</h1>
+            </div>
+            <img src="./img/middle-class.png" alt="初中班级图片">
+            <div class="kctext">
+                课程涵盖专业素描、油画基础、艺术设计等内容，适合有志于报考美术院校的学生：
+                <ul>
+                    <li>人体结构素描</li>
+                    <li>油画技法入门</li>
+                    <li>艺术史鉴赏</li>
+                    <li>毕业创作指导</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 初中班级任课老师 -->
+        <div id="middle-teachers" class="content-section">
+            <div class="title-overlay">
+                <h1>初中班级任课老师</h1>
+            </div>
+            <img src="./img/middle-teachers.png" alt="初中班级任课老师图片">
+            <div class="kctext">
+                教学总监：陈老师（中央美术学院博士，10年教学经验）<br>
+                专业导师：2位省级美术家协会会员<br>
+                定期邀请美院教授开展大师课
+            </div>
+        </div>
+
+        <!-- 初中班级课堂展示 -->
+        <div id="middle-class-display">
+            <div class="gallery-container">
+                <div class="gallery">
+                    <img src="./img/middle-class-display.png" alt="初中班级课堂展示1">
+                    <img src="./img/middle-class-display.png" alt="初中班级课堂展示2">
+                    <img src="./img/middle-class-display.png" alt="初中班级课堂展示3">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('#content > *').addClass('active-content');
+
+            $('.menu-item').click(function () {
+                const $this = $(this);
+                const $submenu = $this.next('.submenu');
+                $('.menu-item, .submenu-item').removeClass('active');
+                $('.submenu').hide();
+
+                if ($submenu.length) {
+                    $submenu.is(':hidden')
+                        ? $submenu.show().prev().addClass('active')
+                        : $submenu.hide().prev().removeClass('active');
+                } else {
+                    showContent($this.data('target'));
+                    $this.addClass('active');
+                }
+            });
+
+            $('.submenu-item').click(function () {
+                $('.submenu-item').removeClass('active');
+                $(this).addClass('active')
+                    .closest('.submenu').prev().addClass('active');
+                showContent($(this).data('target'));
+            });
+
+            function showContent(target) {
+                const $newContent = $('#' + target).clone();
+                const $content = $('#content');
+                $content.html($newContent).addClass('has-content');
+
+                requestAnimationFrame(() => {
+                    $newContent.addClass('active-content');
+                });
+            }
+
+            function openModal(src) {
+                const modal = $(`
+                    <div class="modal">
+                        <div class="modal-content">
+                            <img src="${src}" alt="全屏大图">
+                            <div class="modal-close">&times;</div>
+                        </div>
+                    </div>
+                `);
+                $('body').append(modal);
+                setTimeout(() => modal.addClass('active'), 10);
+
+                modal.find('.modal-close, .modal').click(() => {
+                    modal.removeClass('active');
+                    setTimeout(() => modal.remove(), 300);
+                });
+
+                $(document).on('keyup', (e) => {
+                    if (e.key === 'Escape') modal.click();
+                });
+            }
+
+            $(document).on('click', '.gallery img', function () {
+                openModal($(this).attr('src'));
+            });
+        });
+    </script>
+</body>
+
+</html>

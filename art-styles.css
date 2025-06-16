@@ -1,0 +1,181 @@
+/* 美术课堂展示专用样式 */
+.art-gallery {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 30px;
+	padding: 15px;
+	justify-content: center;
+	margin: 0 auto;
+	max-width: 1200px;
+}
+
+/* 添加加载动画样式 */
+.loading-spinner {
+	width: 50px;
+	height: 50px;
+	border: 5px solid #f3f3f3;
+	border-top: 5px solid #ffcc66;
+	border-radius: 50%;
+	animation: spin 1s linear infinite;
+	margin: 20px auto;
+	display: none;
+}
+
+@keyframes spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
+
+/* 图片加载中显示loading-spinner */
+img:not([src]), img[loading] {
+	opacity: 0;
+	transition: opacity 0.3s;
+}
+
+img:not([src]) + .loading-spinner,
+img[loading] + .loading-spinner {
+	display: block;
+}
+
+img.loaded {
+	opacity: 1;
+}
+
+.art-gallery img {
+	width: 100%;
+	height: 400px;
+	object-fit: cover;
+	border-radius: 8px;
+	transition: transform 0.3s ease;
+	cursor: pointer;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.art-gallery img:hover {
+	transform: scale(1.05);
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* 作品展示样式 */
+.artwork-container {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 100px;
+	position: relative;
+	z-index: 1;
+}
+
+.artwork-menu {
+	width: 100%;
+	max-width: 800px;
+	background: rgba(255, 204, 102, 0.95);
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
+	border-radius: 10px;
+	padding: 15px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	gap: 20px;
+	position: fixed;
+	top: 20px;
+	left: 50%;
+	transform: translateX(-50%);
+	z-index: 9999;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.artwork-menu-item {
+	padding: 12px 25px;
+	background: #fff;
+	border-radius: 8px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	font-size: 18px;
+	font-weight: 600;
+	text-align: center;
+	color: #333;
+	min-width: 120px;
+}
+
+.artwork-menu-item:hover {
+	background: #ffe680;
+	transform: translateY(-2px);
+}
+
+.artwork-menu-item.active {
+	background: #ffe680;
+	color: #000;
+	font-weight: 800;
+	box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.artwork-content {
+	background: #fff;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.course-container {
+	text-align: center;
+}
+
+/* 响应式布局调整 */
+@media (max-width: 1024px) {
+	.art-gallery {
+		gap: 20px;
+		max-width: 95%;
+	}
+	
+	.art-gallery img {
+		height: 350px;
+	}
+}
+
+@media (max-width: 768px) {
+	.art-gallery {
+		gap: 15px;
+	}
+	
+	.art-gallery img {
+		height: 250px;
+	}
+
+	.artwork-menu {
+		width: 90%;
+		padding: 12px;
+		top: 10px;
+	}
+	
+	.artwork-container {
+		margin-top: 90px;
+	}
+}
+
+@media (max-width: 480px) {
+	.art-gallery {
+		gap: 10px;
+	}
+	
+	.art-gallery img {
+		height: 200px;
+	}
+
+	.artwork-menu {
+		width: 95%;
+		padding: 10px;
+		gap: 10px;
+		top: 5px;
+	}
+	
+	.artwork-container {
+		margin-top: 80px;
+	}
+	
+	.artwork-menu-item {
+		padding: 10px 15px;
+		min-width: 100px;
+	}
+}

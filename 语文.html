@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>书法</title>
+	<link rel="icon" href="./img/logo.ico" type="image/x-icon">
+	<link rel="stylesheet" href="styles.css">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+	<div class="container">
+		<div class="menu">
+			<div class="menu-item" data-target="course-intro">课程介绍</div>
+			<div class="menu-item" data-target="teacher-intro">老师简介</div>
+			<div class="menu-item" data-target="enlightenment-class">硬笔班</div>
+			<div class="submenu">
+				<div class="submenu-item" data-target="teachers">教学大纲</div>
+				<div class="submenu-item" data-target="class-display">课堂展示</div>
+			</div>
+			<div class="menu-item" data-target="junior-class">软笔班</div>
+			<div class="submenu">
+				<div class="submenu-item" data-target="junior-teachers">教学大纲</div>
+				<div class="submenu-item" data-target="junior-class-display">课堂展示</div>
+			</div>
+		</div>
+
+		<div class="content" id="content">
+			<img src="./img/图标logo.png" alt="Logo" class="logo-init active-content">
+		</div>
+	</div>
+
+	<div class="hidden-content">
+		<!-- 修改后的课程介绍 -->
+		<div id="course-intro" class="content-section">
+			<div class="title-overlay">
+				<h1>课程介绍</h1>
+			</div>
+			<div class="course-container">
+				<div class="image-row">
+					<img src="./img/msktzs01.jpg" alt="课程图片1">
+					<img src="./img/msktzs02.jpg" alt="课程图片2">
+				</div>
+				<div class="text-container">
+					<div class="kctext">
+						由四川省书法协会会员朱淑林老师及其团队授课，小班教学，一对一指导
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 老师简介 -->
+		<div id="teacher-intro" class="content-section">
+			<div class="title-overlay">
+				<h1>老师简介</h1>
+			</div>
+			<div class="teacher-cards">
+				<div class="teacher-card">
+					<div class="image-container">
+						<img src="./img/laoshi/李老师2.jpg" alt="李老师" onerror="this.src='./img/default.jpg';">
+					</div>
+					<div class="content">
+						<h3>课程主讲——李老师</h3>
+						<ul>
+							<li>师从尹嘉伟老师</li>
+							<li>担任指隶书、行书、草书</li>
+							<li>泸州市书法家协会会员</li>
+							<li>菁华书法协会优秀指导老师</li>
+						</ul>
+						<h3>课程内容</h3>
+						<ul>
+							<li>坐姿、握笔、控笔训练</li>
+							<li>楷书快写、单字提高、卷面书写</li>
+							<li>书体方向、古帖研习、比赛考级</li>
+						</ul>
+						<h3>开设班级</h3>
+						<ul>
+							<li>硬笔书法班</li>
+							<li>软笔书法班</li>
+						</ul>
+					</div>
+				</div>
+				<div class="teacher-card">
+					<div class="image-container">
+						<img src="./img/laoshi/周老师2.jpg" alt="王老师" onerror="this.src='./img/default.jpg';">
+					</div>
+					<div class="content">
+						<h3>课程主讲——周老师</h3>
+						<ul>
+							<li>四川省硬笔书法家协会会员</li>
+							<li>启蒙于书法大家陈华恩老师和刘吉强老师</li>
+							<li>入展成都市书法家协会会员书法纂刻作品展</li>
+							<li>入展“喜迎二十大·奋进新征程”书法作品展</li>
+						</ul>
+						<h3>课程内容</h3>
+						<ul>
+							<li>幼儿书法(坐姿、握笔、控笔训练)</li>
+							<li>实用书写(结构、卷面)</li>
+							<li>古帖、比赛、考级</li>
+						</ul>
+						<h3>开设班级</h3>
+						<ul>
+							<li>硬笔书法班</li>
+							<li>软笔书法班</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 启蒙班教学大纲 -->
+		<div id="teachers" class="content-section">
+			<div class="image-with-title">
+				<div class="image-title">
+					<h1>教学大纲</h1>
+				</div>
+				<div class="course-container">
+					<img src="./img/shufa/硬笔.png" alt="教学大纲表格" class="clickable-image">
+				</div>
+			</div>
+		</div>
+
+		<!-- 启蒙班课堂展示 -->
+		<div id="class-display">
+			<div class="gallery-container">
+				<div class="gallery">
+					<img src="./img/msktzs01.jpg" alt="课堂展示1">
+					<img src="./img/msktzs02.jpg" alt="课堂展示2">
+					<img src="./img/msktzs03.jpg" alt="课堂展示3">
+					<img src="./img/msktzs04.jpg" alt="课堂展示4">
+					<img src="./img/msktzs05.jpg" alt="课堂展示5">
+					<img src="./img/msktzs06.jpg" alt="课堂展示6">
+					<img src="./img/msktzs07.jpg" alt="课堂展示7">
+					<img src="./img/msktzs08.jpg" alt="课堂展示8">
+					<img src="./img/msktzs09.jpg" alt="课堂展示9">
+				</div>
+			</div>
+		</div>
+
+		<!-- 初级班教学大纲 -->
+		<div id="junior-teachers" class="content-section">
+			<div class="image-with-title">
+				<div class="image-title">
+					<h1>教学大纲</h1>
+				</div>
+				<div class="course-container">
+					<img src="./img/shufa/软笔.png" alt="教学大纲表格" class="clickable-image">
+				</div>
+			</div>
+		</div>
+
+		<!-- 初级班课堂展示 -->
+		<div id="junior-class-display">
+			<div class="gallery-container">
+				<div class="gallery">
+					<img src="./img/junior-class-display.png" alt="初级班课堂展示1">
+					<img src="./img/junior-class-display.png" alt="初级班课堂展示2">
+					<img src="./img/junior-class-display.png" alt="初级班课堂展示3">
+				</div>
+			</div>
+		</div>
+
+		<!-- 初中班级课程 -->
+		<div id="middle-class" class="content-section">
+			<div class="title-overlay">
+				<h1>初中班级课程</h1>
+			</div>
+			<img src="./img/middle-class.png" alt="初中班级图片">
+			<div class="kctext">
+				课程涵盖专业素描、油画基础、艺术设计等内容，适合有志于报考美术院校的学生：
+				<ul>
+					<li>人体结构素描</li>
+					<li>油画技法入门</li>
+					<li>艺术史鉴赏</li>
+					<li>毕业创作指导</li>
+				</ul>
+			</div>
+		</div>
+
+		<!-- 初中班级课堂展示 -->
+		<div id="middle-class-display">
+			<div class="gallery-container">
+				<div class="gallery">
+					<img src="./img/middle-class-display.png" alt="初中班级课堂展示1">
+					<img src="./img/middle-class-display.png" alt="初中班级课堂展示2">
+					<img src="./img/middle-class-display.png" alt="初中班级课堂展示3">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		$(document).ready(function() {
+			// 初始化内容显示
+			$('#content > *').addClass('active-content');
+
+			// 菜单点击事件
+			$('.menu-item').click(function() {
+				const $this = $(this);
+				const $submenu = $this.next('.submenu');
+				$('.menu-item, .submenu-item').removeClass('active');
+				$('.submenu').hide();
+
+				if ($submenu.length) {
+					$submenu.is(':hidden') ?
+						$submenu.show().prev().addClass('active') :
+						$submenu.hide().prev().removeClass('active');
+				} else {
+					showContent($this.data('target'));
+					$this.addClass('active');
+				}
+			});
+
+			// 子菜单点击事件
+			$('.submenu-item').click(function() {
+				$('.submenu-item').removeClass('active');
+				$(this).addClass('active')
+					.closest('.submenu').prev().addClass('active');
+				showContent($(this).data('target'));
+			});
+
+			// 内容切换函数
+			function showContent(target) {
+				const $newContent = $('#' + target).clone();
+				const $content = $('#content');
+				$content.html($newContent).addClass('has-content');
+
+				requestAnimationFrame(() => {
+					$newContent.addClass('active-content');
+				});
+			}
+
+			// 图片模态框功能
+			function openModal(src) {
+				const modal = $(`
+					<div class="modal">
+						<div class="modal-content">
+							<img src="${src}" alt="全屏大图">
+							<div class="modal-close">&times;</div>
+						</div>
+					</div>
+				`);
+				$('body').append(modal);
+				setTimeout(() => modal.addClass('active'), 10);
+
+				modal.find('.modal-close, .modal').click(() => {
+					modal.removeClass('active');
+					setTimeout(() => modal.remove(), 300);
+				});
+
+				$(document).on('keyup', (e) => {
+					if (e.key === 'Escape') modal.click();
+				});
+			}
+
+			// 画廊图片点击事件
+			$(document).on('click', '.gallery img, .teacher-card .image-container img, .course-container img', function() {
+				openModal($(this).attr('src'));
+			});
+		});
+	</script>
+</body>
+
+</html>

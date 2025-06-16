@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>美术</title>
+	<link rel="icon" href="./img/logo.ico" type="image/x-icon">
+	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="art-styles.css">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+	<div class="container">
+		<div class="menu">
+			<div class="menu-item" data-target="course-intro">课程介绍</div>
+			<div class="menu-item" data-target="teacher-intro">老师简介</div>
+			<div class="menu-item" data-target="enlightenment-class">启蒙班</div>
+			<div class="submenu">
+				<div class="submenu-item" data-target="teachers">教学大纲</div>
+				<div class="submenu-item" data-target="class-display">课堂展示</div>
+			</div>
+			<div class="menu-item" data-target="junior-class">初级班</div>
+			<div class="submenu">
+				<div class="submenu-item" data-target="junior-teachers">教学大纲</div>
+				<div class="submenu-item" data-target="junior-class-display">课堂展示</div>
+			</div>
+			<div class="menu-item" data-target="advanced-class">高阶班</div>
+			<div class="submenu">
+				<div class="submenu-item" data-target="advanced-teachers">教学大纲</div>
+				<div class="submenu-item" data-target="advanced-class-display">课堂展示</div>
+			</div>
+			<img src="./img/640.gif" alt="Logo" class="fengche">
+		</div>
+
+		<div class="content" id="content">
+			<img src="./img/图标logo.png" alt="Logo" class="logo-init active-content">
+		</div>
+	</div>
+
+	<div class="hidden-content">
+		<!-- 修改后的课程介绍 -->
+		<div id="course-intro" class="content-section">
+			<div class="title-overlay">
+				<h1>课程介绍</h1>
+			</div>
+			<div class="course-container" style="text-align: center;">
+				<div class="loading-spinner"></div>
+				<img src="./img/meishu/kcjs/课程体系_页面_01.png" alt="美术课程体系第1页" class="clickable-image" loading="lazy">
+				<img src="./img/meishu/kcjs/课程体系_页面_02.png" alt="美术课程体系第2页" class="clickable-image" loading="lazy">
+				<img src="./img/meishu/kcjs/课程体系_页面_03.png" alt="美术课程体系第3页" class="clickable-image" loading="lazy">
+				<img src="./img/meishu/kcjs/课程体系_页面_04.png" alt="美术课程体系第4页" class="clickable-image" loading="lazy">
+				<img src="./img/meishu/kcjs/课程体系_页面_05.png" alt="美术课程体系第5页" class="clickable-image" loading="lazy">
+				<img src="./img/meishu/kcjs/课程体系_页面_06.png" alt="美术课程体系第6页" class="clickable-image" loading="lazy">
+				<img src="./img/meishu/kcjs/课程体系_页面_07.png" alt="美术课程体系第7页" class="clickable-image" loading="lazy">
+				<img src="./img/meishu/kcjs/课程体系_页面_08.png" alt="美术课程体系第8页" class="clickable-image" loading="lazy">
+				<img src="./img/meishu/kcjs/课程体系_页面_09.png" alt="美术课程体系第9页" class="clickable-image" loading="lazy">
+				<img src="./img/meishu/kcjs/课程体系_页面_10.png" alt="美术课程体系第10页" class="clickable-image" loading="lazy">
+				<img src="./img/meishu/kcjs/课程体系_页面_11.png" alt="美术课程体系第11页" class="clickable-image" loading="lazy">
+				<img src="./img/meishu/kcjs/课程体系_页面_12.png" alt="美术课程体系第12页" class="clickable-image" loading="lazy">
+				<img src="./img/meishu/kcjs/课程体系_页面_13.png" alt="美术课程体系第13页" class="clickable-image" loading="lazy">
+				<img src="./img/meishu/kcjs/课程体系_页面_14.png" alt="美术课程体系第14页" class="clickable-image" loading="lazy">
+				<img src="./img/meishu/kcjs/课程体系_页面_15.png" alt="美术课程体系第15页" class="clickable-image" loading="lazy">
+				<img src="./img/meishu/kcjs/课程体系_页面_16.png" alt="美术课程体系第16页" class="clickable-image" loading="lazy">
+				<img src="./img/meishu/kcjs/课程体系_页面_17.png" alt="美术课程体系第17页" class="clickable-image" loading="lazy">
+				<img src="./img/meishu/kcjs/课程体系_页面_19.png" alt="美术课程体系第19页" class="clickable-image" loading="lazy">
+			</div>
+		</div>
+
+		<!-- 老师简介 -->
+		<div id="teacher-intro" class="content-section">
+			<div class="title-overlay">
+				<h1>老师简介</h1>
+			</div>
+			<div class="teacher-cards">
+				<div class="teacher-card">
+					<div class="image-container">
+						<img src="./img/meishu/冯老师.jpg" alt="李老师" onerror="this.src='./img/default.jpg';">
+					</div>
+					<div class="content">
+						<h3>课程主讲——小米老师</h3>
+						<ul>
+							<li>6年教学经验</li>
+							<li>中学教师资格证</li>
+							<li>四川省青少年文学艺术联合会会员</li>
+							<li>曾多次带领学生在区级校级等竞赛中
+								取得优异成绩</li>
+						</ul>
+						<h3>课程内容</h3>
+						<ul>
+							<li>速写</li>
+							<li>少儿创意美术</li>
+							<li>综合材料运用</li>
+							<li>基础线描、水彩、水粉</li>
+						</ul>
+						<h3>开设班级</h3>
+						<ul>
+							<li>美术启蒙班</li>
+							<li>美术初级班</li>
+						</ul>
+					</div>
+				</div>
+				<div class="teacher-card">
+					<div class="image-container">
+						<img src="./img/meishu/马老师.jpg" alt="王老师" onerror="this.src='./img/default.jpg';">
+					</div>
+					<div class="content">
+						<h3>课程主讲——猴子老师</h3>
+						<ul>
+							<li>6年教学经验</li>
+							<li>高中教师资格证</li>
+							<li>美术家协会会员</li>
+							<li>所带艺考及普考学生中
+								获得各项业内及社会大奖</li>
+						</ul>
+						<h3>课程内容</h3>
+						<ul>
+							<li>国画</li>
+							<li>素描、速写</li>
+							<li>进阶线描、水彩、水粉</li>
+						</ul>
+						<h3>开设班级</h3>
+						<ul>
+							<li>美术素描班</li>
+							<li>美术高级班</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 启蒙班教学大纲 -->
+		<div id="teachers" class="content-section">
+			<!-- 教学计划部分 -->
+			<div class="image-with-title">
+				<div class="image-title">
+					<h1>教学计划</h1>
+				</div>
+				<div class="course-container">
+					<img src="./img/meishu/启蒙班.jpg" alt="教学计划表格" class="clickable-image">
+				</div>
+			</div>
+		</div>
+		<!-- 启蒙班课堂展示 -->
+		<div id="class-display">
+			<div id="class-display">
+				<div class="gallery-container">
+					<div class="gallery">
+						<div class="loading-spinner"></div>
+						<img src="./img/meishu/msktzs01.jpg" alt="课堂展示1" loading="lazy">
+						<img src="./img/meishu/msktzs02.jpg" alt="课堂展示2" loading="lazy">
+						<img src="./img/meishu/msktzs03.jpg" alt="课堂展示3" loading="lazy">
+						<img src="./img/meishu/msktzs04.jpg" alt="课堂展示4" loading="lazy">
+						<img src="./img/meishu/msktzs05.jpg" alt="课堂展示5" loading="lazy">
+						<img src="./img/meishu/msktzs06.jpg" alt="课堂展示6" loading="lazy">
+						<img src="./img/meishu/msktzs07.jpg" alt="课堂展示7" loading="lazy">
+						<img src="./img/meishu/msktzs08.jpg" alt="课堂展示8" loading="lazy">
+						<img src="./img/meishu/msktzs09.jpg" alt="课堂展示9" loading="lazy">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 初级班教学大纲 -->
+		<div id="junior-teachers" class="content-section">
+			<div class="title-overlay">
+				<h1>教学大纲</h1>
+			</div>
+			<div class="course-container">
+				<div class="loading-spinner"></div>
+				<img src="./img/meishu/mscjb (1).png" alt="初级班教学大纲1" class="clickable-image" loading="lazy">
+				<img src="./img/meishu/mscjb (2).png" alt="初级班教学大纲2" class="clickable-image" loading="lazy">
+				<img src="./img/meishu/mscjb (3).png" alt="初级班教学大纲3" class="clickable-image" loading="lazy">
+			</div>
+		</div>
+
+		<!-- 初级班课堂展示 -->
+		<div id="junior-class-display">
+			<div id="class-display">
+				<div class="gallery-container">
+					<div class="gallery">
+						<div class="loading-spinner"></div>
+						<img src="./img/meishu/mscj01 (1).jpg" alt="初级班课堂展示1" loading="lazy">
+						<img src="./img/meishu/mscj01 (2).jpg" alt="初级班课堂展示2" loading="lazy">
+						<img src="./img/meishu/mscj01 (3).jpg" alt="初级班课堂展示3" loading="lazy">
+						<img src="./img/meishu/mscj01 (4).jpg" alt="初级班课堂展示4" loading="lazy">
+						<img src="./img/meishu/mscj01 (5).jpg" alt="初级班课堂展示5" loading="lazy">
+						<img src="./img/meishu/mscj01 (6).jpg" alt="初级班课堂展示6" loading="lazy">
+						<img src="./img/meishu/mscj01 (7).jpg" alt="初级班课堂展示7" loading="lazy">
+						<img src="./img/meishu/mscj01 (8).jpg" alt="初级班课堂展示8" loading="lazy">
+						<img src="./img/meishu/mscj01 (9).jpg" alt="初级班课堂展示9" loading="lazy">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 高阶班教学大纲 -->
+		<div id="advanced-teachers" class="content-section">
+			<div class="title-overlay">
+				<h1>教学大纲</h1>
+			</div>
+			<div class="course-container">
+				<div class="loading-spinner"></div>
+				<img src="./img/meishu/高级班.png" alt="高级班教学大纲" style="width: 100%; height: auto;" class="clickable-image" loading="lazy">
+			</div>
+		</div>
+
+		<!-- 高阶班课堂展示 -->
+		<div id="advanced-class-display">
+			<div class="artwork-container">
+				<div class="artwork-menu">
+					<div class="artwork-menu-item active" data-category="oil">速写</div>
+					<div class="artwork-menu-item" data-category="design">素描</div>
+					<div class="artwork-menu-item" data-category="comprehensive">水彩</div>
+				</div>
+				<div class="artwork-content">
+					<div class="gallery category-content expanded" id="oil">
+						<div class="loading-spinner"></div>
+						<img src="./img/meishu/qiehuan/suxie (6).jpg" alt="速写作品1" loading="lazy">
+						<img src="./img/meishu/qiehuan/suxie (2).jpg" alt="速写作品2" loading="lazy">
+						<img src="./img/meishu/qiehuan/suxie (3).jpg" alt="速写作品3" loading="lazy">
+						<img src="./img/meishu/qiehuan/suxie (4).jpg" alt="速写作品4" loading="lazy">
+						<img src="./img/meishu/qiehuan/suxie (5).jpg" alt="速写作品5" loading="lazy">
+						<img src="./img/meishu/qiehuan/suxie (1).jpg" alt="速写作品6" loading="lazy">
+					</div>
+					<div class="gallery category-content" id="design">
+						<div class="loading-spinner"></div>
+						<img src="./img/meishu/qiehuan/sumiao (1).jpg" alt="素描作品1" loading="lazy">
+						<img src="./img/meishu/qiehuan/sumiao (5).jpg" alt="素描作品2" loading="lazy">
+						<img src="./img/meishu/qiehuan/sumiao (3).jpg" alt="素描作品3" loading="lazy">
+						<img src="./img/meishu/qiehuan/sumiao (4).jpg" alt="素描作品4" loading="lazy">
+						<img src="./img/meishu/qiehuan/sumiao (2).jpg" alt="素描作品5" loading="lazy">
+						<img src="./img/meishu/qiehuan/sumiao (6).jpg" alt="素描作品6" loading="lazy">
+					</div>
+					<div class="gallery category-content" id="comprehensive">
+						<div class="loading-spinner"></div>
+						<img src="./img/meishu/qiehuan/shuicai (1).jpg" alt="水彩作品1" loading="lazy">
+						<img src="./img/meishu/qiehuan/shuicai (2).jpg" alt="水彩作品2" loading="lazy">
+						<img src="./img/meishu/qiehuan/shuicai (3).jpg" alt="水彩作品3" loading="lazy">
+						<img src="./img/meishu/qiehuan/shuicai (4).jpg" alt="水彩作品4" loading="lazy">
+						<img src="./img/meishu/qiehuan/shuicai (5).jpg" alt="水彩作品5" loading="lazy">
+						<img src="./img/meishu/qiehuan/shuicai (6).jpg" alt="水彩作品6" loading="lazy">	
+						<img src="./img/meishu/qiehuan/shuicai (7).jpg" alt="水彩作品7" loading="lazy">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		$(document).ready(function() {
+			// 处理图片加载
+			function handleImageLoad() {
+				$('img[loading="lazy"]').each(function() {
+					const img = this;
+					if (img.complete) {
+						$(img).addClass('loaded');
+					} else {
+						$(img).on('load', function() {
+							$(this).addClass('loaded');
+						});
+					}
+				});
+			}
+
+			// 初始化内容显示
+			$('#content > *').addClass('active-content');
+
+			// 菜单点击事件
+			$('.menu-item').click(function() {
+				const $this = $(this);
+				const $submenu = $this.next('.submenu');
+				$('.menu-item, .submenu-item').removeClass('active');
+				$('.submenu').hide();
+
+				if ($submenu.length) {
+					$submenu.is(':hidden') ?
+						$submenu.show().prev().addClass('active') :
+						$submenu.hide().prev().removeClass('active');
+				} else {
+					showContent($this.data('target'));
+					$this.addClass('active');
+				}
+			});
+
+			// 子菜单点击事件
+			$('.submenu-item').click(function() {
+				$('.submenu-item').removeClass('active');
+				$(this).addClass('active')
+					.closest('.submenu').prev().addClass('active');
+				showContent($(this).data('target'));
+			});
+
+			// 内容切换函数
+			function showContent(target) {
+				const $newContent = $('#' + target).clone();
+				const $content = $('#content');
+				$content.html($newContent).addClass('has-content');
+
+				// 确保新内容完全加载后再绑定事件
+				setTimeout(() => {
+					$newContent.addClass('active-content');
+					initializeArtworkGallery($content);
+					handleImageLoad(); // 处理新加载内容中的图片
+				}, 0);
+			}
+
+			// 初始化作品展示功能
+			function initializeArtworkGallery($container) {
+				// 为每个作品展示区域的导航项绑定点击事件
+				$container.find('.artwork-menu-item').on('click', function() {
+					const $this = $(this);
+					const category = $this.data('category');
+					const $artworkContainer = $this.closest('.artwork-container');
+					
+					// 更新导航项状态
+					$this.siblings().removeClass('active');
+					$this.addClass('active');
+					
+					// 更新内容显示
+					$artworkContainer.find('.category-content').hide().removeClass('expanded');
+					const $targetCategory = $artworkContainer.find('#' + category);
+					$targetCategory.show().addClass('expanded');
+					
+					// 处理新显示的分类中的图片加载
+					handleImageLoad();
+				});
+
+				// 确保默认显示第一个分类
+				$container.find('.artwork-container').each(function() {
+					const $firstMenuItem = $(this).find('.artwork-menu-item').first();
+					const firstCategory = $firstMenuItem.data('category');
+					
+					$firstMenuItem.addClass('active');
+					$(this).find('#' + firstCategory).addClass('expanded').show();
+					$(this).find('.category-content').not('#' + firstCategory).removeClass('expanded').hide();
+				});
+			}
+
+			// 图片模态框功能
+			function openModal(src) {
+				const modal = $(`
+					<div class="modal">
+						<div class="modal-content">
+							<img src="${src}" alt="全屏大图">
+							<div class="modal-close">&times;</div>
+						</div>
+					</div>
+				`);
+				
+				$('body').append(modal);
+				setTimeout(() => modal.addClass('active'), 10);
+
+				modal.find('.modal-close, .modal').click(() => {
+					modal.removeClass('active');
+					setTimeout(() => modal.remove(), 300);
+				});
+
+				$(document).on('keyup', (e) => {
+					if (e.key === 'Escape') modal.click();
+				});
+			}
+
+			// 画廊图片点击事件
+			$(document).on('click', '.gallery img, .clickable-image', function() {
+				openModal($(this).attr('src'));
+			});
+
+			// 初始化当前页面的作品展示和图片加载
+			initializeArtworkGallery($('#content'));
+			handleImageLoad();
+		});
+	</script>
+</body>
+
+</html>

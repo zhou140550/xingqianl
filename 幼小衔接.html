@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>幼小
+	</title>
+	<link rel="icon" href="./img/logo.ico" type="image/x-icon">
+	<link rel="stylesheet" href="styles.css">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<style>
+		/* 添加此样式 */
+		.teacher-card .image-container {
+				height: 200px; /* 设置固定高度 */
+				overflow: hidden; /* 隐藏溢出部分 */
+			}
+			.teacher-card .image-container img {
+				width: auto; /* 保持图片比例 */
+				height: 100%; /* 高度适应容器 */
+				object-fit: contain; /* 保持图片比例 */
+				object-position: top; /* 确保显示顶部 */
+			}
+		/* 添加此样式 */
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<div class="menu">
+			<div class="menu-item" data-target="course-intro">课程介绍</div>
+			<div class="menu-item" data-target="teacher-intro">老师简介</div>
+			<div class="menu-item" data-target="food-safety">食品安全</div> <!-- 新增菜单项 -->
+			<div class="menu-item" data-target="class-display">课堂展示</div>
+			<div class="menu-item" data-target="enlightenment-class">暑假快班</div>
+			<div class="menu-item" data-target="junior-class">半年班</div>
+            <div class="menu-item" data-target="full-year-class">全年班</div>
+			<img src="./img/640.gif" alt="Logo" class="fengche">
+		</div>
+
+		<div class="content" id="content">
+			<img src="./img/图标logo.png" alt="Logo" class="logo-init active-content">
+		</div>
+	</div>
+
+	<div class="hidden-content">
+		<!-- 修改后的课程介绍 -->
+		<div id="course-intro" class="content-section">
+			<div class="title-overlay">
+				<h1>课程介绍</h1>
+			</div>
+			<div class="course-container">
+				<div class="image-row">
+					<img src="./img/youxiao/kcjs1.jpg" alt="课程图片1">
+					<img src="./img/youxiao/kcjs2.jpg" alt="课程图片2">
+				</div>
+				<div class="text-container">
+					<div class="kctext">
+						自2018年起就专注于学前衔接小学学习生活的习惯和知识培养，其体系和教材内容均为星潜力与清华启迪联合自行研发，已在星潜力学习毕业的几届学生均在各自小学成绩名列前茅。
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 老师简介 -->
+		<div id="teacher-intro" class="content-section">
+			<div class="title-overlay">
+				<h1>老师简介</h1>
+			</div>
+			<div class="teacher-cards">
+				<div class="teacher-card">
+					<div class="image-container">
+						<img src="./img/youxiao/左老师.png" alt="李老师" onerror="this.src='./img/default.jpg';">
+					</div>
+					<div class="content">
+						<h3>逻辑思维——左老师</h3>
+						<ul>
+							<li>5年教学实践经验，热爱教育</li>
+							<li>熟知小学数学教育规律及教学方法</li>
+							<li>数学教师资格证</li>
+						</ul>
+						<h3>课程内容</h3>
+						<ul>
+							<li>互动式教学</li>
+							<li>课堂氛围轻松</li>
+							<li>引导学生主动学习</li>
+						</ul>
+						<h3>开设班级</h3>
+						<ul>
+							<li>幼小单科班</li>
+							<li>幼小全日制班</li>
+                            <li>低段思维课程</li>
+						</ul>
+					</div>
+				</div>
+				<!-- 新增老师卡片1 -->
+				<div class="teacher-card">
+					<div class="image-container">
+						<img src="./img/youxiao/丹老师.png" alt="王老师" onerror="this.src='./img/default.jpg';">
+					</div>
+					<div class="content">
+						<h3>国际语言——molly老师</h3>
+						<ul>
+							<li>教学经验丰富</li>
+							<li>持英语六级证书</li>
+							<li>英语教师资格证</li>
+							<li>2023-2024年荣获星潜力优秀教师奖</li>
+						</ul>
+						<h3>课程内容</h3>
+						<ul>
+							<li>互动式教学</li>
+							<li>课堂氛围轻松</li>
+							<li>引导学生主动学习</li>
+						</ul>
+						<h3>开设班级</h3>
+						<ul>
+							<li>幼小单科班</li>
+							<li>幼小全日制班</li>
+						</ul>
+					</div>
+				</div>
+				<!-- 新增老师卡片2 -->
+				<div class="teacher-card">
+					<div class="image-container">
+						<img src="./img/youxiao/蒲老师.jpg" alt="张老师" onerror="this.src='./img/default.jpg';">
+					</div>
+					<div class="content">
+						<h3>语言文学——蒲老师</h3>
+						<ul>
+							<li>教学经验丰富</li>
+							<li>汉语言文学专业持语文教师资格证</li>
+							<li>2023-2024年荣获星潜力优秀教师奖</li>
+						</ul>
+						<h3>课程优势</h3>
+						<ul>
+							<li>集中管理学习</li>
+							<li>老师全程陪伴</li>
+							<li>提供接送服务</li>
+						</ul>
+						<h3>开设班级</h3>
+						<ul>
+							<li>晚托班</li>
+							<li>寒暑假全托</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 食品安全 -->
+		<div id="food-safety" class="content-section">
+			<div class="title-overlay">
+				<h1>食品安全</h1>
+			</div>
+			<div class="gallery-container">
+				<div class="gallery">
+					<img src="./img/youxiao/yyzz (1).jpg" alt="">
+					<img src="./img/youxiao/yyzz (2).jpg" alt="">
+					<img src="./img/youxiao/jchj (1).jpg" alt="">
+					<img src="./img/youxiao/jchj (2).jpg" alt="">
+					<img src="./img/youxiao/jchj (3).jpg" alt="">
+					<img src="./img/youxiao/jchj (4).jpg" alt="">
+					<img src="./img/youxiao/jchj (5).jpg" alt="">
+					<img src="./img/youxiao/cs (1).jpg" alt="">
+					<img src="./img/youxiao/cs (2).jpg" alt="">
+				</div>
+			</div>
+		</div>
+
+		<!-- 课堂展示 -->
+		<div id="class-display">
+			<div class="gallery-container">
+				<div class="gallery">
+					<img src="./img/youxiao/youxiaokc1.jpg" alt="">
+					<img src="./img/youxiao/youxiaokc2.jpg" alt="">
+					<img src="./img/youxiao/youxiaokc1.jpg" alt="">
+					<img src="./img/youxiao/youxiaokc2.jpg" alt="">
+					<img src="./img/youxiao/youxiaokc3.jpg" alt="">
+					<img src="./img/youxiao/youxiaokc4.jpg" alt="">
+					<img src="./img/youxiao/youxiaokc5.jpg" alt="">
+					<img src="./img/youxiao/youxiaokc6.jpg" alt="">
+			<video src="./img/youxiao/sp (3).mp4" controls></video>
+			<video src="./img/youxiao/sp (4).mp4" controls></video>
+			<video src="./img/youxiao/sp (5).mp4" controls></video>
+			<video src="./img/youxiao/sp (6).mp4" controls></video>
+			<video src="./img/youxiao/sp (8).mp4" controls></video>
+				</div>
+			</div>
+		</div>
+
+		<!-- 启蒙班教学大纲 -->
+		<div id="enlightenment-class" class="content-section">
+			<div class="image-with-title">
+				<div class="image-title">
+					<h1>教学大纲</h1>
+				</div>
+				<div class="course-container">
+					<img src="./img/youxiao/快车班.png" alt="教学大纲表格" class="clickable-image">
+				</div>
+			</div>
+		</div>
+
+		<!-- 初级班教学大纲 -->
+		<div id="junior-class" class="content-section">
+			<div class="image-with-title">
+				<div class="image-title">
+					<h1>教学大纲</h1>
+				</div>
+				<div class="course-container">
+					<img src="./img/youxiao/半年班.png" alt="教学大纲表格" class="clickable-image">
+				</div>
+			</div>
+		</div>
+
+		<!-- 全年班教学大纲 -->
+		<div id="full-year-class" class="content-section">
+			<div class="image-with-title">
+				<div class="image-title">
+					<h1>教学大纲</h1>
+				</div>
+				<div class="course-container">
+					<img src="./img/youxiao/全年班.png" alt="教学大纲表格" class="clickable-image">
+				</div>
+			</div>
+		</div>
+
+		<!-- 初中班级课堂展示 -->
+		<div id="middle-class-display">
+			<div class="gallery-container">
+				<div class="image-title">
+					<h1>初中班级课堂展示</h1>
+				</div>
+				<div class="gallery">
+					<img src="./img/middle-class-display.png" alt="初中班级课堂展示1">
+					<img src="./img/middle-class-display.png" alt="初中班级课堂展示2">
+					<img src="./img/middle-class-display.png" alt="初中班级课堂展示3">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		$(document).ready(function() {
+			// 初始化内容显示
+			$('#content > *').addClass('active-content');
+
+			// 菜单点击事件
+			$('.menu-item').click(function() {
+				const $this = $(this);
+				const $submenu = $this.next('.submenu');
+				$('.menu-item, .submenu-item').removeClass('active');
+				$('.submenu').hide();
+
+				if ($submenu.length) {
+					$submenu.is(':hidden') ?
+						$submenu.show().prev().addClass('active') :
+						$submenu.hide().prev().removeClass('active');
+				} else {
+					showContent($this.data('target'));
+					$this.addClass('active');
+				}
+			});
+
+			// 子菜单点击事件
+			$('.submenu-item').click(function() {
+				$('.submenu-item').removeClass('active');
+				$(this).addClass('active')
+					.closest('.submenu').prev().addClass('active');
+				showContent($(this).data('target'));
+			});
+
+			// 内容切换函数
+			function showContent(target) {
+				const $newContent = $('#' + target).clone();
+				const $content = $('#content');
+				$content.html($newContent).addClass('has-content');
+
+				requestAnimationFrame(() => {
+					$newContent.addClass('active-content');
+				});
+			}
+
+			// 图片模态框功能
+			function openModal(src) {
+				const modal = $(`
+					<div class="modal">
+						<div class="modal-content">
+							<img src="${src}" alt="全屏大图">
+							<div class="modal-close">&times;</div>
+						</div>
+					</div>
+				`);
+				$('body').append(modal);
+				setTimeout(() => modal.addClass('active'), 10);
+
+				modal.find('.modal-close, .modal').click(() => {
+					modal.removeClass('active');
+					setTimeout(() => modal.remove(), 300);
+				});
+
+				$(document).on('keyup', (e) => {
+					if (e.key === 'Escape') modal.click();
+				});
+			}
+
+			// 画廊图片点击事件
+			$(document).on('click', '.gallery img, .teacher-card .image-container img, .course-container img', function() {
+				openModal($(this).attr('src'));
+			});
+		});
+	</script>
+</body>
+
+</html>
