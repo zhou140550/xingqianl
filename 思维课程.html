@@ -21,7 +21,8 @@
 			.Teaching-materials img {
 				width: 100%;
 				height: auto;
-				}
+			}
+			/* 年级tab相关样式已移至styles.css */
 		</style>
 	</head>
 
@@ -71,54 +72,51 @@
 				<div class="title-overlay">
 					<h1>老师简介</h1>
 				</div>
-				<div class="teacher-cards">
-					<div class="teacher-card">
-						<div class="image-container">
-							<img src="./img/siwei/教师天团.png" alt="李老师" onerror="this.src='./img/default.jpg';">
-						</div>
-						<div class="content">
-							<h3>课程主讲——数学导师天团</h3>
-							<ul>
-								<li>名校毕业</li>
-								<li>多年教学经验</li>
-								<li>名下学生在校成绩优异，考入名校实验班、竞赛班，获得名校奖学金</li>
-								<li>独特体系，善于拆解问题回到底层逻辑，用学生最容易懂的方式解决难题</li>
-							</ul>
-						</div>
-					</div>
+				<div class="course-container" style="text-align: center;">
+					<div class="loading-spinner"></div>
+					<img src="./img/siwei/tiantuan.png" alt="美术课程体系第1页" class="clickable-image" loading="lazy">
 				</div>
 			</div>
 			<div id="class-outline" class="content-section"> <!-- 修改此处 -->
-				<div class="image-with-title">
-					<div class="image-title">
-						<h1>三年级春季课程大纲</h1>
-					</div>
-					<div class="course-container">
-						<img src="./img/siwei/三年级春季.png" alt="教学大纲表格" class="clickable-image" style="width: 50%;"> <!-- 修改此处 -->
-					</div>
+				<!-- 年级段横排按钮，仿美术/书法风格 -->
+				<div class="artwork-menu grade-tabs">
+					<div class="artwork-menu-item grade-tab active" data-target="grade-ysx">幼升小</div>
+					<div class="artwork-menu-item grade-tab" data-target="grade-ys2">一升二</div>
+					<div class="artwork-menu-item grade-tab" data-target="grade-2s3">二升三</div>
+					<div class="artwork-menu-item grade-tab" data-target="grade-3s4">三升四</div>
+					<div class="artwork-menu-item grade-tab" data-target="grade-4s5">四升五</div>
 				</div>
-				<div class="image-with-title">
-					<div class="image-title">
-						<h1>四年级春季基础班课程大纲</h1>
+				<!-- 年级段内容 -->
+				<div class="grade-contents">
+					<div id="grade-ysx" class="grade-content active">
+						<div class="image-with-title">
+							<img src="./img/siwei/ysx.png" class="clickable-image" loading="lazy">
+						</div>
 					</div>
-					<div class="course-container">
-						<img src="./img/siwei/四年级基础班.png" alt="教学大纲表格" class="clickable-image" style="width: 50%;"> <!-- 修改此处 -->
+					<div id="grade-ys2" class="grade-content">
+						<div class="image-with-title">
+							<img src="./img/siwei/ys2.png" class="clickable-image" loading="lazy">
+						</div>
 					</div>
-				</div>
-				<div class="image-with-title">
-					<div class="image-title">
-						<h1>四年级春季提高班课程大纲</h1>
+					<div id="grade-2s3" class="grade-content">
+						<div class="image-with-title">
+							<img src="./img/siwei/2s3.png" class="clickable-image" loading="lazy">
+						</div>
 					</div>
-					<div class="course-container">
-						<img src="./img/siwei/四年级提高班.png" alt="教学大纲表格" class="clickable-image" style="width: 50%;"> <!-- 修改此处 -->
+					<div id="grade-3s4" class="grade-content">
+						<div class="image-with-title">
+							<img src="./img/siwei/3s4.png" class="clickable-image" loading="lazy">
+						</div>
 					</div>
-				</div>
-				<div class="image-with-title">
-					<div class="image-title">
-						<h1>五年级春季提高班课程大纲</h1>
+					<div id="grade-4s5" class="grade-content">
+						<div class="image-with-title">
+							<img src="./img/siwei/ssw.png" class="clickable-image" loading="lazy">
+						</div>
 					</div>
-					<div class="course-container">
-						<img src="./img/siwei/五年级春季提高班.png" alt="教学大纲表格" class="clickable-image" style="width: 50%;"> <!-- 修改此处 -->
+					<div id="grade-5cj" class="grade-content">
+						<div class="image-with-title">
+							<img src="./img/siwei/五年级春季提高班.png" class="clickable-image" loading="lazy">
+						</div>
 					</div>
 				</div>
 			</div>
@@ -212,6 +210,22 @@
 				$(document).on('click', '.gallery img, .clickable-image', function() {
 					openModal($(this).attr('src'));
 				});
+
+				// 年级tab切换
+				$(document).on('click', '.grade-tab', function() {
+					const target = $(this).data('target');
+					$('.grade-tab').removeClass('active');
+					$(this).addClass('active');
+					$('.grade-content.active').removeClass('active').fadeOut(200, function() {
+						$('#' + target).fadeIn(200).addClass('active');
+					});
+				});
+
+				// 默认展开幼升小
+				$('.grade-tab').removeClass('active');
+				$('.grade-content').removeClass('active');
+				$('.grade-tab[data-target="grade-ysx"]').addClass('active');
+				$('#grade-ysx').addClass('active');
 			});
 		</script>
 	</body>

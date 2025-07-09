@@ -9,20 +9,7 @@
 	<link rel="icon" href="./img/logo.ico" type="image/x-icon">
 	<link rel="stylesheet" href="styles.css">
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<style>
-		/* 添加此样式 */
-		.teacher-card .image-container {
-				height: 200px; /* 设置固定高度 */
-				overflow: hidden; /* 隐藏溢出部分 */
-			}
-			.teacher-card .image-container img {
-				width: auto; /* 保持图片比例 */
-				height: 100%; /* 高度适应容器 */
-				object-fit: contain; /* 保持图片比例 */
-				object-position: top; /* 确保显示顶部 */
-			}
-		/* 添加此样式 */
-	</style>
+	<!-- 样式已迁移到styles.css -->
 </head>
 
 <body>
@@ -67,81 +54,82 @@
 			<div class="title-overlay">
 				<h1>老师简介</h1>
 			</div>
-			<div class="teacher-cards">
-				<div class="teacher-card">
-					<div class="image-container">
-						<img src="./img/youxiao/左老师.png" alt="李老师" onerror="this.src='./img/default.jpg';">
+			<div class="teacher-cards-vertical">
+				<!-- 左老师 -->
+				<div class="teacher-row">
+					<div class="teacher-photo">
+						<img src="./img/youxiao/左老师.png" alt="左老师" onerror="this.src='./img/default.jpg';">
 					</div>
-					<div class="content">
-						<h3>逻辑思维——左老师</h3>
-						<ul>
-							<li>5年教学实践经验，热爱教育</li>
-							<li>熟知小学数学教育规律及教学方法</li>
-							<li>数学教师资格证</li>
-						</ul>
-						<h3>课程内容</h3>
-						<ul>
-							<li>互动式教学</li>
-							<li>课堂氛围轻松</li>
-							<li>引导学生主动学习</li>
-						</ul>
-						<h3>开设班级</h3>
-						<ul>
-							<li>幼小单科班</li>
-							<li>幼小全日制班</li>
-                            <li>低段思维课程</li>
-						</ul>
+					<div class="teacher-info">
+						<h2>逻辑思维——左老师</h2>
+						<div>
+							<ol>
+								<li>5年教学实践经验，热爱教育</li>
+								<li>熟知小学数学教育规律及教学方法</li>
+								<li>数学教师资格证</li>
+							</ol>
+							<ol>
+								<li>互动式教学</li>
+								<li>课堂氛围轻松</li>
+								<li>引导学生主动学习</li>
+							</ol>
+							<ul class="teacher-block green">
+								<li>幼小单科班</li>
+								<li>幼小全日制班</li>
+								<li>低段思维课程</li>
+							</ul>
+						</div>
 					</div>
 				</div>
-				<!-- 新增老师卡片1 -->
-				<div class="teacher-card">
-					<div class="image-container">
-						<img src="./img/youxiao/丹老师.png" alt="王老师" onerror="this.src='./img/default.jpg';">
+				<!-- molly老师 -->
+				<div class="teacher-row">
+					<div class="teacher-photo">
+						<img src="./img/shufa/dandan.jpg" alt="molly老师" onerror="this.src='./img/default.jpg';">
 					</div>
-					<div class="content">
+					<div class="teacher-info">
 						<h3>国际语言——molly老师</h3>
-						<ul>
-							<li>教学经验丰富</li>
-							<li>持英语六级证书</li>
-							<li>英语教师资格证</li>
-							<li>2023-2024年荣获星潜力优秀教师奖</li>
-						</ul>
-						<h3>课程内容</h3>
-						<ul>
-							<li>互动式教学</li>
-							<li>课堂氛围轻松</li>
-							<li>引导学生主动学习</li>
-						</ul>
-						<h3>开设班级</h3>
-						<ul>
-							<li>幼小单科班</li>
-							<li>幼小全日制班</li>
-						</ul>
+						<div>
+							<ol>
+								<li>教学经验丰富</li>
+								<li>持英语六级证书</li>
+								<li>英语教师资格证</li>
+								<li>2023-2024年荣获星潜力优秀教师奖</li>
+							</ol>
+							<ol>
+								<li>互动式教学</li>
+								<li>课堂氛围轻松</li>
+								<li>引导学生主动学习</li>
+							</ol>
+							<ul class="teacher-block green">
+								<li>幼小单科班</li>
+								<li>幼小全日制班</li>
+							</ul>
+						</div>
 					</div>
 				</div>
-				<!-- 新增老师卡片2 -->
-				<div class="teacher-card">
-					<div class="image-container">
-						<img src="./img/youxiao/蒲老师.jpg" alt="张老师" onerror="this.src='./img/default.jpg';">
+				<!-- 蒲老师 -->
+				<div class="teacher-row">
+					<div class="teacher-photo">
+						<img src="./img/youxiao/蒲老师.jpg" alt="蒲老师" onerror="this.src='./img/default.jpg';">
 					</div>
-					<div class="content">
+					<div class="teacher-info">
 						<h3>语言文学——蒲老师</h3>
-						<ul>
-							<li>教学经验丰富</li>
-							<li>汉语言文学专业持语文教师资格证</li>
-							<li>2023-2024年荣获星潜力优秀教师奖</li>
-						</ul>
-						<h3>课程优势</h3>
-						<ul>
-							<li>集中管理学习</li>
-							<li>老师全程陪伴</li>
-							<li>提供接送服务</li>
-						</ul>
-						<h3>开设班级</h3>
-						<ul>
-							<li>晚托班</li>
-							<li>寒暑假全托</li>
-						</ul>
+						<div>
+							<ol>
+								<li>教学经验丰富</li>
+								<li>汉语言文学专业持语文教师资格证</li>
+								<li>2023-2024年荣获星潜力优秀教师奖</li>
+							</ol>
+							<ol>
+								<li>集中管理学习</li>
+								<li>老师全程陪伴</li>
+								<li>提供接送服务</li>
+							</ol>
+							<ul class="teacher-block green">
+								<li>晚托班</li>
+								<li>寒暑假全托</li>
+							</ul>
+						</div>
 					</div>
 				</div>
 			</div>

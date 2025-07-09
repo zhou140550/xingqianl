@@ -94,7 +94,6 @@ body {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	overflow: hidden;
 	height: 100%;
 	border-radius: 15px; /* 圆角效果 */
 }
@@ -502,4 +501,228 @@ body {
 .image-with-title img {
 	width: 100%;
 	height: auto;
+}
+
+/* 以下为从幼小衔接.html迁移的样式 */
+.teacher-card .image-container {
+	height: 200px;
+	overflow: hidden;
+}
+.teacher-card .image-container img {
+	width: auto;
+	height: 100%;
+	object-fit: contain;
+	object-position: top;
+}
+.teacher-cards-vertical {
+	display: flex;
+	flex-direction: column;
+	gap: 40px;
+	margin-top: 60px;
+}
+.teacher-row {
+	display: flex;
+	align-items: flex-start;
+	background: #fffbe6;
+	border-radius: 15px;
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+	padding: 5px 5px;
+	width: 100%;
+	max-width: 100%;
+	gap: 24px;
+	align-items: center;
+	overflow: hidden;
+}
+.teacher-photo {
+	flex: 0 0 140px;
+	display: flex;
+	justify-content: center;
+}
+.teacher-photo img {
+	width: 250px;
+	height: 250px;
+	object-fit: cover;
+	object-position: top;
+	border-radius: 50%;
+	box-shadow: 8px 12px 24px 0 rgba(0,0,0,0.25);
+}
+.teacher-info {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	margin-left: 20px;
+}
+.teacher-info h2, .teacher-info h3 {
+	font-size: 24px;
+}
+.teacher-info>div {
+	display: flex;
+	gap: 30px;
+}
+.teacher-info ul {
+  width: 100%;
+  margin: 0 auto 8px auto;
+  padding-left: 0;
+  padding-right: 0;
+  text-align: left;
+}
+.teacher-info ul li {
+  display: block;
+  max-width: none;
+  word-break: break-all;
+  white-space: normal;
+  text-align: left;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  list-style: decimal inside;
+}
+.teacher-info ul li:last-child {
+  margin-bottom: 0;
+}
+.teacher-info ol {
+  width: 100%;
+  margin: 0 auto 8px auto;
+  padding-left: 1.8em;
+  padding-right: 0;
+  text-align: left;
+  list-style: decimal inside;
+}
+.teacher-info ol li {
+  display: list-item;
+  word-break: break-all;
+  white-space: normal;
+  text-align: left;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  vertical-align: top;
+}
+.teacher-info ol li:last-child {
+  margin-bottom: 0;
+}
+@media (max-width: 1000px) {
+	.teacher-row {
+		flex-direction: column;
+		align-items: center;
+		padding: 20px 10px;
+	}
+	.teacher-info {
+		margin-left: 0;
+		margin-top: 20px;
+	}
+	.teacher-info>div {
+		flex-direction: column;
+		gap: 10px;
+	}
+}
+/* 迁移结束 */
+.teacher-block.green {
+  list-style: none;
+  padding-left: 0;
+  margin: 0 0 18px 0;
+  font-size: 18px;
+  line-height: 1.7;
+}
+.teacher-block.green li {
+  background: #43a047;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 10px;
+  padding: 10px 0;
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 18px;
+  list-style: none;
+  word-break: break-all;
+  white-space: normal;
+  display: block;
+}
+.teacher-block.green li:last-child {
+  margin-bottom: 0;
+}
+.teacher-info h2 {
+  text-align: left;
+  margin-left: 0;
+  margin-right: 0;
+  font-size: 32px;
+}
+.teacher-info {
+  margin-left: 0;
+  padding-left: 0;
+}
+.teacher-info h2 {
+  text-align: left;
+  margin-left: 0;
+  padding-left: 0;
+}
+.teacher-info ol,
+.teacher-info ul {
+  margin-left: 0;
+  padding-left: 0;
+}
+.teacher-info ol li,
+.teacher-info ul li {
+  font-size: 20px;
+  margin-bottom: 14px;
+}
+.teacher-info ol li:last-child,
+.teacher-info ul li:last-child {
+  margin-bottom: 0;
+}
+
+/* 思维课程-教学大纲横向按钮样式 */
+.artwork-menu.grade-tabs {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    background: rgba(255, 204, 102, 0.95);
+    border-radius: 10px;
+    padding: 15px 0;
+    margin-bottom: 30px;
+    margin-top: 10px;
+}
+.artwork-menu-item.grade-tab {
+    padding: 8px 16px;
+    background: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+    font-size: 15px;
+    font-weight: 600;
+    color: #333;
+    min-width: 80px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+.artwork-menu-item.grade-tab:hover {
+    background: #ffe680;
+    transform: translateY(-2px) scale(1.05);
+}
+.artwork-menu-item.grade-tab.active {
+    background: #ffe680;
+    color: #000;
+    font-weight: 800;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+}
+/* 切换动画 */
+.grade-content {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    left: 0; right: 0;
+    transition: opacity 0.4s cubic-bezier(0.4,0,0.2,1), visibility 0.4s;
+    z-index: 0;
+}
+.grade-content.active {
+    opacity: 1;
+    visibility: visible;
+    position: static;
+    z-index: 1;
+    animation: fadeInUp 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
 }
