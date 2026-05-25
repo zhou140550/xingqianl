@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>星潜力 内容管理后台</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, "PingFang SC", sans-serif; background: #f0f2f5; min-height: 100vh; }
+.header { background: #1a1a2e; color: white; padding: 16px 24px; display: flex; align-items: center; gap: 12px; }
+.header h1 { font-size: 18px; font-weight: 600; }
+.header .badge { background: #e74c3c; font-size: 11px; padding: 2px 8px; border-radius: 10px; }
+.layout { display: flex; min-height: calc(100vh - 56px); }
+.sidebar { width: 200px; background: white; border-right: 1px solid #e8e8e8; padding: 16px 0; flex-shrink: 0; }
+.sidebar-item { padding: 12px 20px; cursor: pointer; font-size: 14px; color: #555; display: flex; align-items: center; gap: 8px; }
+.sidebar-item:hover { background: #f5f5f5; }
+.sidebar-item.active { background: #e8f4ff; color: #1677ff; font-weight: 500; border-right: 3px solid #1677ff; }
+.sidebar-item .icon { font-size: 16px; }
+.main { flex: 1; padding: 24px; overflow-y: auto; }
+.page { display: none; }
+.page.active { display: block; }
+.card { background: white; border-radius: 8px; padding: 24px; margin-bottom: 16px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+.card h2 { font-size: 16px; margin-bottom: 20px; color: #222; padding-bottom: 12px; border-bottom: 1px solid #f0f0f0; }
+.form-row { margin-bottom: 16px; }
+.form-row label { display: block; font-size: 13px; color: #666; margin-bottom: 6px; font-weight: 500; }
+.form-row textarea { width: 100%; padding: 10px 12px; border: 1px solid #d9d9d9; border-radius: 6px; font-size: 14px; font-family: inherit; resize: vertical; min-height: 80px; line-height: 1.6; }
+.form-row input { width: 100%; padding: 10px 12px; border: 1px solid #d9d9d9; border-radius: 6px; font-size: 14px; font-family: inherit; }
+.form-row textarea:focus, .form-row input:focus { outline: none; border-color: #1677ff; box-shadow: 0 0 0 2px rgba(22,119,255,0.1); }
+.teacher-block { border: 1px solid #e8e8e8; border-radius: 8px; padding: 16px; margin-bottom: 12px; background: #fafafa; }
+.teacher-block h3 { font-size: 14px; color: #333; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
+.img-hint { font-size: 12px; color: #999; margin-top: 4px; }
+.img-hint a { color: #1677ff; }
+.btn { padding: 10px 24px; border: none; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 500; }
+.btn-primary { background: #1677ff; color: white; }
+.btn-primary:hover { background: #0958d9; }
+.btn-success { background: #52c41a; color: white; }
+.btn-success:hover { background: #389e0d; }
+.save-bar { position: sticky; bottom: 0; background: white; padding: 16px 24px; border-top: 1px solid #f0f0f0; display: flex; gap: 12px; align-items: center; }
+.save-hint { font-size: 12px; color: #999; flex: 1; }
+.toast { position: fixed; top: 20px; right: 20px; background: #52c41a; color: white; padding: 12px 20px; border-radius: 8px; font-size: 14px; z-index: 9999; display: none; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.help-box { background: #fffbe6; border: 1px solid #ffe58f; border-radius: 6px; padding: 12px 16px; font-size: 13px; color: #614700; line-height: 1.8; margin-bottom: 16px; }
+.help-box strong { color: #d46b08; }
+@media(max-width: 600px) { .grid2 { grid-template-columns: 1fr; } .layout { flex-direction: column; } .sidebar { width: 100%; display: flex; overflow-x: auto; padding: 8px; border-right: none; border-bottom: 1px solid #e8e8e8; } .sidebar-item { white-space: nowrap; border-right: none !important; } }
+</style>
+<script src="./content-loader.js"></script>
+</head>
+<body>
+<div class="header">
+  <span style="font-size:24px">⭐</span>
+  <h1>星潜力 内容管理后台</h1>
+  <span class="badge">内部使用</span>
+</div>
+<div class="layout">
+  <div class="sidebar">
+    <div class="sidebar-item active" onclick="switchPage('youxiao')"><span class="icon">📚</span>幼小衔接</div>
+    <div class="sidebar-item" onclick="switchPage('siwei')"><span class="icon">🧠</span>思维课程</div>
+    <div class="sidebar-item" onclick="switchPage('yingyu')"><span class="icon">🌍</span>剑桥英语</div>
+    <div class="sidebar-item" onclick="switchPage('shufa')"><span class="icon">✏️</span>书法</div>
+    <div class="sidebar-item" onclick="switchPage('meishu')"><span class="icon">🎨</span>美术</div>
+    <div class="sidebar-item" onclick="switchPage('tuoguan')"><span class="icon">🏫</span>托管</div>
+    <div class="sidebar-item" onclick="switchPage('guide')"><span class="icon">📖</span>使用说明</div>
+  </div>
+  <div class="main">
+
+    <!-- 幼小衔接 -->
+    <div id="page-youxiao" class="page active">
+      <div class="card">
+        <h2>📚 幼小衔接 — 课程介绍</h2>
+        <div class="form-row">
+          <label>课程介绍文字</label>
+          <textarea id="youxiao-intro" rows="4">自2018年起就专注于学前衔接小学学习生活的习惯和知识培养，其体系和教材内容均为星潜力与清华启迪联合自行研发，已在星潜力学习毕业的几届学生均在各自小学成绩名列前茅。</textarea>
+        </div>
+        <div class="grid2">
+          <div class="form-row">
+            <label>课程表图片链接</label>
+            <input id="youxiao-schedule" value="./img/youxiao/kcb.jpg">
+            <div class="img-hint">图片上传到图床后，把链接粘贴到这里。推荐图床：<a href="https://imgbb.com" target="_blank">imgbb.com</a></div>
+          </div>
+          <div class="form-row">
+            <label>暑假快班大纲图片链接</label>
+            <input id="youxiao-qkb" value="./img/youxiao/快车班.png">
+          </div>
+        </div>
+        <div class="grid2">
+          <div class="form-row">
+            <label>半年班大纲图片链接</label>
+            <input id="youxiao-bnb" value="./img/youxiao/半年班.png">
+          </div>
+          <div class="form-row">
+            <label>全年班大纲图片链接</label>
+            <input id="youxiao-qnb" value="./img/youxiao/全年班.png">
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <h2>👩‍🏫 幼小衔接 — 老师简介</h2>
+        <div class="teacher-block">
+          <h3>👤 老师1</h3>
+          <div class="grid2">
+            <div class="form-row"><label>老师姓名/职称</label><input id="youxiao-t1-name" value="逻辑思维——左老师"></div>
+            <div class="form-row"><label>老师照片链接</label><input id="youxiao-t1-photo" value="./img/youxiao/左老师.jpg"></div>
+          </div>
+          <div class="form-row"><label>资质（每行一条）</label><textarea id="youxiao-t1-creds" rows="3">5年教学实践经验，热爱教育
+熟知小学数学教育规律及教学方法
+数学教师资格证</textarea></div>
+          <div class="form-row"><label>教学风格（每行一条）</label><textarea id="youxiao-t1-style" rows="3">互动式教学
+课堂氛围轻松
+引导学生主动学习</textarea></div>
+          <div class="form-row"><label>授课班型（每行一条）</label><textarea id="youxiao-t1-class" rows="2">幼小单科班
+幼小全日制班
+低段思维课程</textarea></div>
+        </div>
+        <div class="teacher-block">
+          <h3>👤 老师2</h3>
+          <div class="grid2">
+            <div class="form-row"><label>老师姓名/职称</label><input id="youxiao-t2-name" value="国际语言——molly老师"></div>
+            <div class="form-row"><label>老师照片链接</label><input id="youxiao-t2-photo" value="./img/shufa/dandan.jpg"></div>
+          </div>
+          <div class="form-row"><label>资质（每行一条）</label><textarea id="youxiao-t2-creds" rows="3">教学经验丰富
+持英语六级证书
+英语教师资格证
+2023-2024年荣获星潜力优秀教师奖</textarea></div>
+          <div class="form-row"><label>教学风格（每行一条）</label><textarea id="youxiao-t2-style" rows="2">互动式教学
+课堂氛围轻松</textarea></div>
+          <div class="form-row"><label>授课班型（每行一条）</label><textarea id="youxiao-t2-class" rows="2">幼小单科班
+幼小全日制班</textarea></div>
+        </div>
+        <div class="teacher-block">
+          <h3>👤 老师3</h3>
+          <div class="grid2">
+            <div class="form-row"><label>老师姓名/职称</label><input id="youxiao-t3-name" value="语言文学——蒲老师"></div>
+            <div class="form-row"><label>老师照片链接</label><input id="youxiao-t3-photo" value="./img/youxiao/蒲老师.jpg"></div>
+          </div>
+          <div class="form-row"><label>资质（每行一条）</label><textarea id="youxiao-t3-creds" rows="3">教学经验丰富
+汉语言文学专业持语文教师资格证
+2023-2024年荣获星潜力优秀教师奖</textarea></div>
+          <div class="form-row"><label>教学风格（每行一条）</label><textarea id="youxiao-t3-style" rows="2">集中管理学习
+老师全程陪伴
+提供接送服务</textarea></div>
+          <div class="form-row"><label>授课班型（每行一条）</label><textarea id="youxiao-t3-class" rows="2">晚托班
+寒暑假全托</textarea></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 思维课程 -->
+    <div id="page-siwei" class="page">
+      <div class="card">
+        <h2>🧠 思维课程 — 课程介绍</h2>
+        <div class="form-row">
+          <label>课程介绍文字</label>
+          <textarea id="siwei-intro" rows="5">数感和逻辑:精讲小阶数学的数感、逻辑等8个底层思维能力，帮助普娃举一反三。
+计算专题:计算专题、解方程、应用题、行程问题、数论、立体几何等板块化学习。
+思维拔高:教娃学数学的系统方法，培养锻炼娃的数学思维。</textarea>
+        </div>
+      </div>
+      <div class="card">
+        <h2>👩‍🏫 思维课程 — 老师简介</h2>
+        <div class="teacher-block">
+          <h3>👤 老师1</h3>
+          <div class="grid2">
+            <div class="form-row"><label>老师姓名/职称</label><input id="siwei-t1-name" value="思维课程主讲老师"></div>
+            <div class="form-row"><label>老师照片链接</label><input id="siwei-t1-photo" value="./img/siwei/tiantuan.png"></div>
+          </div>
+          <div class="form-row"><label>资质（每行一条）</label><textarea id="siwei-t1-creds" rows="3">专业数学教学背景
+丰富竞赛辅导经验</textarea></div>
+          <div class="form-row"><label>教学风格</label><textarea id="siwei-t1-style" rows="2">启发式教学
+小班精讲</textarea></div>
+          <div class="form-row"><label>授课班型</label><textarea id="siwei-t1-class" rows="2">思维提升班
+竞赛培训班</textarea></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 剑桥英语 -->
+    <div id="page-yingyu" class="page">
+      <div class="card">
+        <h2>🌍 剑桥英语 — 课程介绍</h2>
+        <div class="form-row">
+          <label>课程介绍文字</label>
+          <textarea id="yingyu-intro" rows="6">剑桥少儿英语教材《Super Minds》，由剑桥大学出版社教育专家Herbert Puchta及其团队精心雕琢，旨在开发智力、强化思维、促进师生互动。适用于6-12岁小学生，全套共7个级别，包括Start预备级和1-6级。</textarea>
+        </div>
+      </div>
+      <div class="card">
+        <h2>👩‍🏫 剑桥英语 — 老师简介</h2>
+        <div class="teacher-block">
+          <h3>👤 老师1</h3>
+          <div class="grid2">
+            <div class="form-row"><label>老师姓名/职称</label><input id="yingyu-t1-name" value="剑桥英语主讲——Jessie"></div>
+            <div class="form-row"><label>老师照片链接</label><input id="yingyu-t1-photo" value="./img/yimyu/js.jpg"></div>
+          </div>
+          <div class="form-row"><label>资质（每行一条）</label><textarea id="yingyu-t1-creds" rows="4">英属哥伦比亚大学毕业
+雅思7.5分
+英语专业八级
+高中英语教师资格证</textarea></div>
+          <div class="form-row"><label>教学风格</label><textarea id="yingyu-t1-style" rows="3">8人小班教学
+趣味化教考点
+分层精准提分</textarea></div>
+          <div class="form-row"><label>授课班型</label><textarea id="yingyu-t1-class" rows="2">剑桥基础班
+剑桥提升班</textarea></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 书法 -->
+    <div id="page-shufa" class="page">
+      <div class="card">
+        <h2>✏️ 书法 — 课程介绍</h2>
+        <div class="form-row">
+          <label>课程介绍文字</label>
+          <textarea id="shufa-intro" rows="5">专注书法教学，低段着重规范书写习惯的养成，包括控笔训练、正确坐姿与握笔姿势的指导以及基本笔画的书写教学。中高段教学重点从单个字体的结构分析逐步拓展到整体的结构布局，并深入挖掘书法作品中的文化内涵。高段开展国学文化和中国书法史的学习。</textarea>
+        </div>
+      </div>
+      <div class="card">
+        <h2>👩‍🏫 书法 — 老师简介</h2>
+        <div class="teacher-block">
+          <h3>👤 老师1</h3>
+          <div class="grid2">
+            <div class="form-row"><label>老师姓名/职称</label><input id="shufa-t1-name" value="书法主讲——李老师"></div>
+            <div class="form-row"><label>老师照片链接</label><input id="shufa-t1-photo" value="./img/shufa/李老师2.png"></div>
+          </div>
+          <div class="form-row"><label>资质（每行一条）</label><textarea id="shufa-t1-creds" rows="3">师从尹嘉伟老师
+担任指隶书、行书、草书</textarea></div>
+          <div class="form-row"><label>教学风格</label><textarea id="shufa-t1-style" rows="2">因材施教
+循序渐进</textarea></div>
+          <div class="form-row"><label>授课班型</label><textarea id="shufa-t1-class" rows="2">硬笔班
+软笔班</textarea></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 美术 -->
+    <div id="page-meishu" class="page">
+      <div class="card">
+        <h2>🎨 美术 — 课程介绍</h2>
+        <div class="form-row">
+          <label>课程介绍文字</label>
+          <textarea id="meishu-intro" rows="5">专业美术教学，启蒙班培养基础绘画能力，初级班提升造型与色彩表达，高阶班深化艺术创作与竞赛指导。</textarea>
+        </div>
+      </div>
+      <div class="card">
+        <h2>👩‍🏫 美术 — 老师简介</h2>
+        <div class="teacher-block">
+          <h3>👤 老师1</h3>
+          <div class="grid2">
+            <div class="form-row"><label>老师姓名/职称</label><input id="meishu-t1-name" value="美术主讲老师"></div>
+            <div class="form-row"><label>老师照片链接</label><input id="meishu-t1-photo" value="./img/meishu/teacher.jpg"></div>
+          </div>
+          <div class="form-row"><label>资质（每行一条）</label><textarea id="meishu-t1-creds" rows="3">美术教育专业背景
+多年教学经验</textarea></div>
+          <div class="form-row"><label>教学风格</label><textarea id="meishu-t1-style" rows="2">因材施教
+激发创造力</textarea></div>
+          <div class="form-row"><label>授课班型</label><textarea id="meishu-t1-class" rows="2">启蒙班
+初级班
+高阶班</textarea></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 托管 -->
+    <div id="page-tuoguan" class="page">
+      <div class="card">
+        <h2>🏫 托管 — 课程介绍</h2>
+        <div class="form-row">
+          <label>课程介绍文字</label>
+          <textarea id="tuoguan-intro" rows="4">对4-12岁孩子进行课后学习看护及个别学习检查，督促培养独立自主学习习惯。</textarea>
+        </div>
+      </div>
+      <div class="card">
+        <h2>👩‍🏫 托管 — 老师简介</h2>
+        <div class="teacher-block">
+          <h3>👤 老师1</h3>
+          <div class="grid2">
+            <div class="form-row"><label>老师姓名/职称</label><input id="tuoguan-t1-name" value="托管主讲——蒲老师"></div>
+            <div class="form-row"><label>老师照片链接</label><input id="tuoguan-t1-photo" value="./img/tuoguan/蒲老师.jpg"></div>
+          </div>
+          <div class="form-row"><label>资质（每行一条）</label><textarea id="tuoguan-t1-creds" rows="3">教学经验丰富
+汉语言文学专业持语文教师资格证
+2023-2024年荣获星潜力优秀教师奖</textarea></div>
+          <div class="form-row"><label>教学风格</label><textarea id="tuoguan-t1-style" rows="2">集中管理学习
+老师全程陪伴
+提供接送服务</textarea></div>
+          <div class="form-row"><label>授课班型</label><textarea id="tuoguan-t1-class" rows="2">晚托班
+寒暑假全托</textarea></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 使用说明 -->
+    <div id="page-guide" class="page">
+      <div class="card">
+        <h2>📖 使用说明</h2>
+        <div class="help-box">
+          <strong>✅ 改文字内容</strong><br>
+          1. 左边点击要改的课程<br>
+          2. 直接在输入框里修改文字<br>
+          3. 点下方「保存并生效」按钮<br>
+          4. 刷新网页即可看到更新
+        </div>
+        <div class="help-box">
+          <strong>🖼️ 换图片方法</strong><br>
+          1. 打开图床网站 <strong>imgbb.com</strong>（无需注册）<br>
+          2. 上传新图片，复制图片链接<br>
+          3. 把链接粘贴到对应的「图片链接」输入框<br>
+          4. 点「保存并生效」
+        </div>
+        <div class="help-box">
+          <strong>⚠️ 注意事项</strong><br>
+          • 老师资质、教学风格、授课班型：每行写一条，不要加符号<br>
+          • 图片链接必须是完整的 http 开头的网址，或者 ./img/... 开头的本地路径<br>
+          • 保存后如网页没变化，按 Ctrl+F5 强制刷新
+        </div>
+      </div>
+    </div>
+
+    <div class="save-bar">
+      <span class="save-hint">修改内容后点击保存，网页将自动读取最新内容</span>
+      <button class="btn btn-primary" onclick="saveData()">💾 保存并生效</button>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast">✅ 保存成功！刷新网页即可看到更新</div>
+
+<script>
+function switchPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.sidebar-item').forEach(s => s.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  event.currentTarget.classList.add('active');
+}
+
+function getData() {
+  const get = id => { const el = document.getElementById(id); return el ? el.value : ''; };
+  return {
+    youxiao: {
+      course_intro: get('youxiao-intro'),
+      schedule_img: get('youxiao-schedule'),
+      price_qkb: get('youxiao-qkb'),
+      price_bnb: get('youxiao-bnb'),
+      price_qnb: get('youxiao-qnb'),
+      teachers: [
+        { name: get('youxiao-t1-name'), photo: get('youxiao-t1-photo'), creds: get('youxiao-t1-creds'), style: get('youxiao-t1-style'), classes: get('youxiao-t1-class') },
+        { name: get('youxiao-t2-name'), photo: get('youxiao-t2-photo'), creds: get('youxiao-t2-creds'), style: get('youxiao-t2-style'), classes: get('youxiao-t2-class') },
+        { name: get('youxiao-t3-name'), photo: get('youxiao-t3-photo'), creds: get('youxiao-t3-creds'), style: get('youxiao-t3-style'), classes: get('youxiao-t3-class') }
+      ]
+    },
+    siwei: {
+      course_intro: get('siwei-intro'),
+      teachers: [{ name: get('siwei-t1-name'), photo: get('siwei-t1-photo'), creds: get('siwei-t1-creds'), style: get('siwei-t1-style'), classes: get('siwei-t1-class') }]
+    },
+    yingyu: {
+      course_intro: get('yingyu-intro'),
+      teachers: [{ name: get('yingyu-t1-name'), photo: get('yingyu-t1-photo'), creds: get('yingyu-t1-creds'), style: get('yingyu-t1-style'), classes: get('yingyu-t1-class') }]
+    },
+    shufa: {
+      course_intro: get('shufa-intro'),
+      teachers: [{ name: get('shufa-t1-name'), photo: get('shufa-t1-photo'), creds: get('shufa-t1-creds'), style: get('shufa-t1-style'), classes: get('shufa-t1-class') }]
+    },
+    meishu: {
+      course_intro: get('meishu-intro'),
+      teachers: [{ name: get('meishu-t1-name'), photo: get('meishu-t1-photo'), creds: get('meishu-t1-creds'), style: get('meishu-t1-style'), classes: get('meishu-t1-class') }]
+    },
+    tuoguan: {
+      course_intro: get('tuoguan-intro'),
+      teachers: [{ name: get('tuoguan-t1-name'), photo: get('tuoguan-t1-photo'), creds: get('tuoguan-t1-creds'), style: get('tuoguan-t1-style'), classes: get('tuoguan-t1-class') }]
+    }
+  };
+}
+
+function saveData() {
+  const data = getData();
+  localStorage.setItem('xql_content', JSON.stringify(data));
+  const toast = document.getElementById('toast');
+  toast.style.display = 'block';
+  setTimeout(() => toast.style.display = 'none', 3000);
+}
+
+// 加载已保存的数据
+function loadSaved() {
+  const saved = localStorage.getItem('xql_content');
+  if (!saved) return;
+  try {
+    const data = JSON.parse(saved);
+    const set = (id, val) => { const el = document.getElementById(id); if (el && val !== undefined) el.value = val; };
+    if (data.youxiao) {
+      set('youxiao-intro', data.youxiao.course_intro);
+      set('youxiao-schedule', data.youxiao.schedule_img);
+      set('youxiao-qkb', data.youxiao.price_qkb);
+      set('youxiao-bnb', data.youxiao.price_bnb);
+      set('youxiao-qnb', data.youxiao.price_qnb);
+      if (data.youxiao.teachers) {
+        ['t1','t2','t3'].forEach((t,i) => {
+          const teacher = data.youxiao.teachers[i];
+          if (!teacher) return;
+          set(`youxiao-${t}-name`, teacher.name);
+          set(`youxiao-${t}-photo`, teacher.photo);
+          set(`youxiao-${t}-creds`, teacher.creds);
+          set(`youxiao-${t}-style`, teacher.style);
+          set(`youxiao-${t}-class`, teacher.classes);
+        });
+      }
+    }
+    ['siwei','yingyu','shufa','meishu','tuoguan'].forEach(k => {
+      if (data[k]) {
+        set(`${k}-intro`, data[k].course_intro);
+        if (data[k].teachers && data[k].teachers[0]) {
+          set(`${k}-t1-name`, data[k].teachers[0].name);
+          set(`${k}-t1-photo`, data[k].teachers[0].photo);
+          set(`${k}-t1-creds`, data[k].teachers[0].creds);
+          set(`${k}-t1-style`, data[k].teachers[0].style);
+          set(`${k}-t1-class`, data[k].teachers[0].classes);
+        }
+      }
+    });
+  } catch(e) {}
+}
+loadSaved();
+</script>
+</body>
+</html>
