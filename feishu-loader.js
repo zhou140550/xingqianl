@@ -40,7 +40,7 @@ function getPageName() {
 
 // 获取飞书Token
 async function getToken() {
-  const res = await fetch('https://open.feishu.cn/open-apis/auth/v3/tenant_access_token/internal', {
+  const res = await fetch('https://feishu-proxy.zhouyuanbo497.workers.dev/proxy/open-apis/auth/v3/tenant_access_token/internal', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ app_id: FEISHU_CONFIG.appId, app_secret: FEISHU_CONFIG.appSecret })
@@ -52,7 +52,7 @@ async function getToken() {
 // 读取表格数据
 async function fetchTableData(tableId, token) {
   const res = await fetch(
-    `https://open.feishu.cn/open-apis/bitable/v1/apps/${FEISHU_CONFIG.appToken}/tables/${tableId}/records?page_size=100`,
+    `https://feishu-proxy.zhouyuanbo497.workers.dev/proxy/open-apis/bitable/v1/apps/${FEISHU_CONFIG.appToken}/tables/${tableId}/records?page_size=100`,
     { headers: { 'Authorization': `Bearer ${token}` } }
   );
   const data = await res.json();
