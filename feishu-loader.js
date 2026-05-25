@@ -1,5 +1,5 @@
 /**
- * 星潜力网站 - 飞书内容加载器 v2
+ * 星潜力网站 - 飞书内容加载器 v3
  */
 const FEISHU_CONFIG = {
   appToken: 'PjsUbnliYaxZEesVC9XcLr9Yneg',
@@ -50,11 +50,14 @@ async function fetchTableData(tableId, token) {
     module: (item.fields['文本'] || item.fields['模块'] || '').trim(),
     content: (item.fields['内容'] || '').trim(),
     images: (item.fields['图片链接'] || '').trim(),
-    visible: item.fields['是否显示'] !== false
+    visible: item.fields['是否显示'] !== false && item.fields['是否显示'] !== null
   }));
 }
 
 function applyData(records) {
+  // 缓存到全局，供菜单切换时复用
+  window._feishuRecords = records;
+
   records.forEach(row => {
     const mod = row.module;
     const content = row.content;
@@ -62,12 +65,11 @@ function applyData(records) {
     const visible = row.visible;
 
     // 课程介绍文字
-    if (mod === 'course_intro' && content) {
+    if (mod === 'course_intro') {
       const section = document.getElementById('course-intro');
       if (section) {
         const kctext = section.querySelector('.kctext');
-        if (kctext) {
-          // 找纯文字节点
+        if (kctext && content) {
           for (let node of kctext.childNodes) {
             if (node.nodeType === 3 && node.textContent.trim()) {
               node.textContent = '\n' + content + '\n';
@@ -75,6 +77,8 @@ function applyData(records) {
             }
           }
         }
+        // 控制整个区块显示隐藏
+        section.style.display = visible ? '' : 'none';
       }
     }
 
@@ -85,18 +89,15 @@ function applyData(records) {
       if (!rows[idx]) return;
       const block = rows[idx];
 
-      // 显示/隐藏
       block.style.display = visible ? '' : 'none';
       if (!visible) return;
 
-      // 解析内容
       const lines = content.split('\n');
       lines.forEach(line => {
         const colonIdx = line.indexOf('：');
         if (colonIdx === -1) return;
         const key = line.substring(0, colonIdx).trim();
         const val = line.substring(colonIdx + 1).trim();
-
         if (key === '姓名') {
           const el = block.querySelector('h2, h3');
           if (el) el.textContent = val;
@@ -114,8 +115,6 @@ function applyData(records) {
           if (ul) ul.innerHTML = val.split('|').map(v => `<li>${v.trim()}</li>`).join('');
         }
       });
-
-      // 照片
       if (images) {
         const img = block.querySelector('.teacher-photo img');
         if (img) img.src = images.split('\n')[0].trim();
@@ -154,6 +153,38 @@ function applyData(records) {
   });
 }
 
+// 重新应用显示隐藏（菜单切换后调用）
+function reapplyVisibility() {
+  const records = window._feishuRecords;
+  if (!records) return;
+  records.forEach(row => {
+    const mod = row.module;
+    const visible = row.visible;
+
+    if (mod.startsWith('teacher_')) {
+      const idx = parseInt(mod.split('_')[1]) - 1;
+      const rows = document.querySelectorAll('.teacher-row');
+      if (rows[idx]) rows[idx].style.display = visible ? '' : 'none';
+    }
+    if (mod === 'course_intro') {
+      const section = document.getElementById('course-intro');
+      if (section) section.style.display = visible ? '' : 'none';
+    }
+    if (mod.startsWith('gallery_')) {
+      const key = mod.replace('gallery_', '');
+      const section = document.getElementById(key);
+      if (section) section.style.display = visible ? '' : 'none';
+    }
+  });
+}
+
+// 监听菜单切换，重新应用显示隐藏
+function bindMenuListener() {
+  $(document).on('click', '.menu-item', function() {
+    setTimeout(reapplyVisibility, 150);
+  });
+}
+
 async function loadFeishuContent() {
   const pageName = getPageName();
   if (!pageName) return;
@@ -164,6 +195,7 @@ async function loadFeishuContent() {
     const records = await fetchTableData(tableId, token);
     if (records.length > 0) {
       applyData(records);
+      bindMenuListener();
       console.log(`✅ 飞书内容加载成功：${pageName}，共${records.length}条`);
     }
   } catch(e) {
