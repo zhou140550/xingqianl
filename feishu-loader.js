@@ -5,7 +5,7 @@ const FEISHU_CONFIG = {
   appToken: 'PjsUbnliYaxZEesVC9XcLr9Yneg',
   appId: 'cli_aa99634ff3a3dcda',
   appSecret: 'O7mPRTLmSiGS9arBWONIDfdLkGRhw1wP',
-  proxyBase: 'https://xingqianl.pages.dev/api/feishu',
+  proxyBase: 'https://1437043292-dird3xyscz.ap-guangzhou.tencentscf.com',
   tables: {
     '幼小衔接': 'tblvhEbqTVUvQ4fY',
     '思维课程': 'tblMCkfrK0Qo2JSV',
