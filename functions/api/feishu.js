@@ -20,11 +20,11 @@ export async function onRequest(context) {
       'Content-Type': 'application/json',
       'Authorization': request.headers.get('Authorization') || '',
     },
-    body: request.method !== 'GET' ? request.body : null,
+    body: ['GET', 'HEAD'].includes(request.method) ? null : request.body,
   });
 
-  const data = await response.json();
-  return new Response(JSON.stringify(data), {
+  const data = await response.text();
+  return new Response(data, {
     headers: { ...corsHeaders, 'Content-Type': 'application/json' },
   });
 }
