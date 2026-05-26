@@ -1,0 +1,130 @@
+{
+  "幼小衔接": [
+    {
+      "module": "course_intro",
+      "content": "自2018年起就专注于学前衔接小学学习生活的习惯和知识培养，其体系和教材内容均为星潜力与清华启迪联合自行研发，已在星潜力学习毕业的几届学生均在各自小学成绩名列前茅。",
+      "images": "",
+      "visible": true
+    },
+    {
+      "module": "teacher_1",
+      "content": "姓名：逻辑思维——左老师\n资质：5年教学实践经验，热爱教育|熟知小学数学教育规律及教学方法|数学教师资格证\n风格：互动式教学|课堂氛围轻松|引导学生主动学习\n班型：幼小单科班|幼小全日制班|低段思维课程",
+      "images": "./img/youxiao/左老师.jpg",
+      "visible": true
+    },
+    {
+      "module": "teacher_2",
+      "content": "姓名：国际语言——molly老师\n资质：教学经验丰富|持英语六级证书|英语教师资格证|2023-2024年荣获星潜力优秀教师奖\n风格：互动式教学|课堂氛围轻松|引导学生主动学习\n班型：幼小单科班|幼小全日制班",
+      "images": "./img/shufa/dandan.jpg",
+      "visible": true
+    },
+    {
+      "module": "teacher_3",
+      "content": "姓名：语言文学——蒲老师\n资质：教学经验丰富|汉语言文学专业持语文教师资格证|2023-2024年荣获星潜力优秀教师奖\n风格：集中管理学习|老师全程陪伴|提供接送服务\n班型：晚托班|寒暑假全托",
+      "images": "./img/youxiao/蒲老师.jpg",
+      "visible": true
+    },
+    {
+      "module": "img_schedule",
+      "content": "",
+      "images": "./img/youxiao/kcb.jpg",
+      "visible": true
+    },
+    {
+      "module": "img_qkb",
+      "content": "",
+      "images": "./img/youxiao/快车班.png",
+      "visible": true
+    },
+    {
+      "module": "img_bnb",
+      "content": "",
+      "images": "./img/youxiao/半年班.png",
+      "visible": true
+    },
+    {
+      "module": "img_qnb",
+      "content": "",
+      "images": "./img/youxiao/全年班.png",
+      "visible": true
+    }
+  ],
+  "思维课程": [
+    {
+      "module": "course_intro",
+      "content": "数感和逻辑：精讲小阶数学的数感、逻辑等8个底层思维能力，帮助普娃举一反三。\n计算专题：计算专题、解方程、应用题、行程问题、数论、立体几何等板块化学习。\n思维拔高：教娃学数学的系统方法，培养锻炼娃的数学思维。",
+      "images": "",
+      "visible": true
+    },
+    {
+      "module": "teacher_1",
+      "content": "姓名：思维课程主讲老师\n资质：专业数学教学背景|丰富竞赛辅导经验\n风格：启发式教学|小班精讲\n班型：思维提升班|竞赛培训班",
+      "images": "./img/siwei/tiantuan.png",
+      "visible": true
+    }
+  ],
+  "剑桥英语": [
+    {
+      "module": "course_intro",
+      "content": "剑桥少儿英语教材《Super Minds》，由剑桥大学出版社教育专家Herbert Puchta及其团队精心雕琢，旨在开发智力、强化思维、促进师生互动。适用于6-12岁小学生，全套共7个级别。",
+      "images": "",
+      "visible": true
+    },
+    {
+      "module": "teacher_1",
+      "content": "姓名：剑桥英语主讲——Jessie\n资质：英属哥伦比亚大学毕业|雅思7.5分|英语专业八级|高中英语教师资格证\n风格：8人小班教学|趣味化教考点|分层精准提分|定制化破难点\n班型：剑桥基础班|剑桥提升班",
+      "images": "./img/yimyu/js.jpg",
+      "visible": true
+    }
+  ],
+  "书法": [
+    {
+      "module": "course_intro",
+      "content": "专注书法教学，低段着重规范书写习惯的养成，包括控笔训练、正确坐姿与握笔姿势的指导以及基本笔画的书写教学。中高段从单个字体的结构分析逐步拓展到整体的结构布局，并深入挖掘书法作品中的文化内涵。高段开展国学文化和中国书法史的学习。",
+      "images": "",
+      "visible": true
+    },
+    {
+      "module": "teacher_1",
+      "content": "姓名：书法主讲——李老师\n资质：师从尹嘉伟老师|担任隶书、行书、草书教学\n风格：因材施教|循序渐进\n班型：硬笔班|软笔班",
+      "images": "./img/shufa/李老师2.png",
+      "visible": true
+    }
+  ],
+  "美术": [
+    {
+      "module": "course_intro",
+      "content": "专业美术教学，启蒙班培养基础绘画能力，初级班提升造型与色彩表达，高阶班深化艺术创作与竞赛指导。",
+      "images": "",
+      "visible": true
+    },
+    {
+      "module": "teacher_1",
+      "content": "姓名：美术主讲老师\n资质：美术教育专业背景|多年教学经验\n风格：因材施教|激发创造力\n班型：启蒙班|初级班|高阶班",
+      "images": "./img/meishu/teacher.jpg",
+      "visible": true
+    }
+  ],
+  "托管": [
+    {
+      "module": "course_intro",
+      "content": "对4-12岁孩子进行课后学习看护及个别学习检查，督促培养独立自主学习习惯。",
+      "images": "",
+      "visible": true
+    },
+    {
+      "module": "teacher_1",
+      "content": "姓名：托管主讲——蒲老师\n资质：教学经验丰富|汉语言文学专业持语文教师资格证|2023-2024年荣获星潜力优秀教师奖\n风格：集中管理学习|老师全程陪伴|提供接送服务\n班型：晚托班|寒暑假全托",
+      "images": "./img/tuoguan/蒲老师.jpg",
+      "visible": true
+    }
+  ],
+  "校区介绍": [
+    {
+      "module": "gallery_banner",
+      "content": "",
+      "images": "./img/lb1.jpg\n./img/lb2.png\n./img/lb3.png",
+      "visible": true
+    }
+  ]
+}
