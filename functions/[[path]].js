@@ -3,11 +3,11 @@ export async function onRequest(context) {
   const url = new URL(request.url);
 
   // 只转发飞书API请求，其他请求直接放行
-  if (!url.pathname.startsWith('/open-apis')) {
+  if (!url.pathname.startsWith('/feishu-api')) {
     return new Response('not found', { status: 404 });
   }
 
-  const target = 'https://open.feishu.cn' + url.pathname + url.search;
+  const target = 'https://open.feishu.cn' + url.pathname.replace('/feishu-api', '') + url.search;
 
   const corsHeaders = {
     'Access-Control-Allow-Origin': '*',
