@@ -2,9 +2,9 @@ export async function onRequest(context) {
   const request = context.request;
   const url = new URL(request.url);
 
-  // 只转发飞书API请求
+  // 只转发飞书API请求，其他请求直接放行
   if (!url.pathname.startsWith('/open-apis')) {
-    return fetch(request);
+    return new Response('not found', { status: 404 });
   }
 
   const target = 'https://open.feishu.cn' + url.pathname + url.search;
