@@ -1,10 +1,10 @@
 /**
- * 星潜力网站 - 飞书多维表格内容加载器（安全云代理 & 动态渲染版）
+ * 星潜力网站 - 飞书多维表格内容加载器（终极防缓存稳定版）
  * 
  * 1. 已解决跨域问题（通过 Cloudflare Worker 代理）
  * 2. 已隐藏敏感密码（appSecret 在云端运行，安全防窃）
- * 3. 老师板块已实现“动态渲染”（在飞书增加/删除行，网页自动增删老师卡片）
- * 4. 完美兼容：既支持飞书内直接“拖拽/上传”图片，也支持传统的图片网址链接。
+ * 3. 已加入防缓存机制（每次刷新强制拉取飞书最新数据，解决平板不更新问题）
+ * 4. 老师板块已实现“动态渲染”（在飞书增加/删除行，网页自动同步）
  */
 
 const FEISHU_CONFIG = {
@@ -32,14 +32,14 @@ function getPageName() {
   if (url.includes('书法') || url.includes('shufa')) return '书法';
   if (url.includes('美术') || url.includes('meishu')) return '美术';
   if (url.includes('托管') || url.includes('tuoguan')) return '托管';
-  if (url.includes('校区') || url.includes('xiaoqu')) return '校区介绍';
+  if (url.includes('校区') || url.includes('xiaoqu')) return '校介绍'; // 兼容“校区介绍”
   return null;
 }
 
-// 2. 通过 Cloudflare 代理，安全、跨域地读取表格数据
+// 2. 通过 Cloudflare 代理，安全、跨域、防缓存地读取表格数据
 async function fetchTableData(tableId) {
-  // 直接呼叫您的 Cloudflare 中间人，中间人会在云端自动处理 Token
-  const res = await fetch(`${FEISHU_CONFIG.proxyUrl}?tableId=${tableId}`);
+  // 【核心修改】最后加上了 &_t=${Date.now()} 随机数，强制平板浏览器每次都下载最新数据，不读老缓存
+  const res = await fetch(`${FEISHU_CONFIG.proxyUrl}?tableId=${tableId}&_t=${Date.now()}`);
   const data = await res.json();
   if (!data.data) return [];
   
