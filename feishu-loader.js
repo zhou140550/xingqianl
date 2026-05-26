@@ -6,7 +6,7 @@ const FEISHU_CONFIG = {
   appToken: 'PjsUbnliYaxZEesVC9XcLr9Yneg',
   appId: 'cli_aa99634ff3a3dcda',
   appSecret: 'O7mPRTLmSiGS9arBWONIDfdLkGRhw1wP',
-  proxyBase: 'https://feishu-proxy.zhouyuanbo497.workers.dev/proxy',
+  proxyBase: 'https://xingqianl.pages.dev/api/feishu',
   tables: {
     '幼小衔接': 'tblvhEbqTVUvQ4fY',
     '思维课程': 'tblMCkfrK0Qo2JSV',
@@ -17,7 +17,7 @@ const FEISHU_CONFIG = {
     '校区介绍': 'tblVtVgF6RkyM6wc'
   }
 };
-
+ 
 function getPageName() {
   const url = decodeURIComponent(window.location.pathname);
   if (url.includes('幼小')) return '幼小衔接';
@@ -29,7 +29,7 @@ function getPageName() {
   if (url.includes('校区')) return '校区介绍';
   return null;
 }
-
+ 
 async function getToken() {
   const res = await fetch(FEISHU_CONFIG.proxyBase + '/open-apis/auth/v3/tenant_access_token/internal', {
     method: 'POST',
@@ -39,7 +39,7 @@ async function getToken() {
   const data = await res.json();
   return data.tenant_access_token;
 }
-
+ 
 async function fetchTableData(tableId, token) {
   const res = await fetch(
     `${FEISHU_CONFIG.proxyBase}/open-apis/bitable/v1/apps/${FEISHU_CONFIG.appToken}/tables/${tableId}/records?page_size=100`,
@@ -54,7 +54,7 @@ async function fetchTableData(tableId, token) {
     visible: !!(item.fields['是否显示'])
   }));
 }
-
+ 
 // 把飞书数据应用到当前显示的内容区域
 function applyAll(records) {
   records.forEach(row => {
@@ -62,7 +62,7 @@ function applyAll(records) {
     const content = row.content;
     const images = row.images;
     const visible = row.visible;
-
+ 
     // 课程介绍文字
     if (mod === 'course_intro') {
       const kctext = document.querySelector('#content .kctext');
@@ -78,7 +78,7 @@ function applyAll(records) {
       const section = document.querySelector('#content #course-intro');
       if (section) section.style.display = visible ? '' : 'none';
     }
-
+ 
     // 老师模块
     if (mod.startsWith('teacher_')) {
       const idx = parseInt(mod.split('_')[1]) - 1;
@@ -87,7 +87,7 @@ function applyAll(records) {
       const block = rows[idx];
       block.style.display = visible ? '' : 'none';
       if (!visible) return;
-
+ 
       const lines = content.split('\n');
       lines.forEach(line => {
         const colonIdx = line.indexOf('：');
@@ -116,7 +116,7 @@ function applyAll(records) {
         if (img) img.src = images.split('\n')[0].trim();
       }
     }
-
+ 
     // 单张图片
     if (mod.startsWith('img_') && images) {
       const key = mod.replace('img_', '');
@@ -132,7 +132,7 @@ function applyAll(records) {
         if (el) el.src = images.split('\n')[0].trim();
       }
     }
-
+ 
     // 图片画廊
     if (mod.startsWith('gallery_')) {
       const key = mod.replace('gallery_', '');
@@ -148,7 +148,7 @@ function applyAll(records) {
     }
   });
 }
-
+ 
 // 拦截菜单切换，在切换后重新应用飞书数据
 function hookMenuSwitch() {
   // 监听#content的DOM变化，每次切换后重新应用
@@ -162,7 +162,7 @@ function hookMenuSwitch() {
     observer.observe(content, { childList: true, subtree: false });
   }
 }
-
+ 
 async function loadFeishuContent() {
   const pageName = getPageName();
   if (!pageName) return;
@@ -181,5 +181,5 @@ async function loadFeishuContent() {
     console.log('飞书加载失败，使用原始内容', e);
   }
 }
-
+ 
 document.addEventListener('DOMContentLoaded', loadFeishuContent);
