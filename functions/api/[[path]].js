@@ -1,7 +1,7 @@
 export async function onRequest(context) {
   const request = context.request;
   const url = new URL(request.url);
-  const path = url.pathname.replace('/api', '');
+  const path = '/open-apis' + url.pathname.split('/open-apis')[1];
   const target = 'https://open.feishu.cn' + path + url.search;
 
   const corsHeaders = {
