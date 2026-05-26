@@ -1,6 +1,12 @@
 export async function onRequest(context) {
   const request = context.request;
   const url = new URL(request.url);
+
+  // 只转发飞书API请求
+  if (!url.pathname.startsWith('/open-apis')) {
+    return fetch(request);
+  }
+
   const target = 'https://open.feishu.cn' + url.pathname + url.search;
 
   const corsHeaders = {
